@@ -4,7 +4,7 @@
 
 ## 从干净的克隆构建
 
-使用 Vite 支持的 Node.js 发行线，最低版本为 22.18。npm 根据锁文件安装指定版本。GitHub Actions 使用 Ubuntu 24.04 和 Node.js 24。
+使用 Vite 支持的 Node.js 发行线，最低版本为 22.18。npm 根据锁文件安装指定版本。GitHub Actions 使用固定版本的 Playwright Ubuntu 24.04 镜像，其中包含 Node.js 24 和匹配版本的浏览器。
 
 ```sh
 npm ci

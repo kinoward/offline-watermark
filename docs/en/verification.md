@@ -4,7 +4,7 @@
 
 ## Build from a clean checkout
 
-Use Node.js 22.18 or later in a Vite-supported release line. The project installs the exact versions recorded in its npm lockfile. GitHub Actions runs these checks on Ubuntu 24.04 with Node.js 24.
+Use Node.js 22.18 or later in a Vite-supported release line. The project installs the exact versions recorded in its npm lockfile. GitHub Actions runs these checks in the pinned Playwright Ubuntu 24.04 image with Node.js 24 and matching browsers.
 
 ```sh
 npm ci

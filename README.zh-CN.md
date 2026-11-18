@@ -73,6 +73,19 @@ npm run build:offline -- dist-offline/Watermark.html
 
 [全部贡献者](https://github.com/kinoward/offline-watermark/graphs/contributors) · [反馈问题](https://github.com/kinoward/offline-watermark/issues)
 
+## Star 历史
+
+<p align="center">
+  <a href="https://www.star-history.com/?repos=kinoward%2Foffline-watermark&amp;type=date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left&amp;theme=dark">
+      <img src="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left" width="680" alt="Watermark 在 GitHub 上的 Star 数量随时间的变化">
+    </picture>
+  </a>
+</p>
+
+只有一个日期有 Star 记录时，图中只显示一个点。随着更多日期有了记录，就能看到趋势线。[查看交互图表](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+
 ## 开源许可
 
 **原创代码与文档。** MIT 许可证允许个人使用和商业使用，也允许修改、分发和销售 Watermark。分发本软件的副本或其中的实质性部分时，须保留版权声明（© 2026 Watermark contributors）和许可声明。软件按现状提供，不附带担保。许可证也载明了作者和版权持有人的责任限制。[MIT 许可证全文](LICENSE)

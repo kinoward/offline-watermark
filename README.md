@@ -73,6 +73,19 @@ Open `dist-offline/Watermark.html` directly in your browser. The architecture gu
 
 [All contributors](https://github.com/kinoward/offline-watermark/graphs/contributors) · [Report an issue](https://github.com/kinoward/offline-watermark/issues)
 
+## Star history
+
+<p align="center">
+  <a href="https://www.star-history.com/?repos=kinoward%2Foffline-watermark&amp;type=date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left&amp;theme=dark">
+      <img src="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left" width="680" alt="GitHub stars for Watermark over time">
+    </picture>
+  </a>
+</p>
+
+With stars on only one date, the chart shows a point. Stars on later dates give it a trend line. [Explore the interactive chart](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+
 ## License
 
 **Original code and documentation.** The MIT License permits personal and commercial use. You can modify Watermark, distribute it and sell copies. Keep the copyright notice (© 2026 Watermark contributors) and the permission notice in all copies or substantial portions. The software comes without warranty. The license also limits the liability of the authors and copyright holders. [Full MIT license](LICENSE)

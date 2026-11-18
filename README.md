@@ -49,10 +49,20 @@ On desktop, drag a file onto the workbench. On tablet, turn PDF pages while edit
 
 </details>
 
-## Export details
+## How it works
 
-- **JPG and JPEG** are re-encoded at the quality you choose. Watermark checks dimensions, color profile, resolution, chroma sampling and baseline or progressive mode. File size and compression ratio can change, even at quality 100. **Remove EXIF data** applies the photo’s orientation to its pixels before clearing EXIF.
-- **PDF** gets a tiled watermark on every page. Page sizes, rotations and existing searchable text are preserved. For an encrypted or digitally signed PDF, open a decrypted, unsigned copy.
+**One HTML file contains the editor and its processing engines.** The browser unpacks them as needed. A Web Worker handles the export while you use the interface. Preview and export share the same layout rules. Every other row shifts by half a tile to create the brick pattern.
+
+### Export details
+
+| File | How Watermark adds the text | What carries over |
+| --- | --- | --- |
+| **JPEG** | ImageMagick runs in WebAssembly, draws the watermark at the photo’s resolution and re-encodes it at the selected quality. | Watermark checks dimensions, color profile, resolution, chroma sampling and baseline or progressive encoding. File size can change even at quality 100. |
+| **PDF** | pdf-lib adds the transparent tile to each page. The browser or PDFium renders the preview. | Page sizes, rotations, original image streams and existing searchable text are preserved. |
+
+**Remove EXIF data** applies a JPEG’s stored orientation to its pixels before stripping EXIF. For an encrypted or digitally signed PDF, open a decrypted, unsigned copy.
+
+[Architecture and design decisions](docs/en/architecture.md) · [Build from source](#build-from-source) · [Verification and tests](tests/README.md)
 
 ### Privacy and languages
 
@@ -69,7 +79,7 @@ npm ci
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-Open `dist-offline/Watermark.html` directly in your browser. The architecture guide explains how TypeScript, Web Workers, ImageMagick WASM, pdf-lib and PDFium fit into one file. [Source code](src/) · [Architecture](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Testing](tests/README.md)
+Open `dist-offline/Watermark.html` directly in your browser. [Source code](src/) · [Build and distribution](docs/en/verification.md)
 
 <a name="contributors-and-license"></a>
 

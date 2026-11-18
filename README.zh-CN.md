@@ -49,10 +49,20 @@
 
 </details>
 
-## 导出细节
+## 工作原理
 
-- **JPG 和 JPEG** 会按所选质量重新编码。工具会核对像素尺寸、色彩配置、分辨率、色度采样，以及基线或渐进编码模式。即使质量设为 100，文件大小和压缩率也可能变化。启用 **清除 EXIF 信息** 时，工具先按照片的方向标记旋转或翻转像素，再移除 EXIF。
-- **PDF** 的每一页都会加上平铺水印，保留原有纸张大小、旋转角度和可搜索的正文。处理加密或带数字签名的 PDF 时，请打开已解密、未签名的副本。
+**一个 HTML 文件就包含编辑器和文件处理引擎。** 浏览器按需解包，用后台线程（Web Worker）执行导出，界面仍可操作。预览和导出共用一套排版规则，每隔一行将文字横向错开半格，形成砖形水印。
+
+### 导出细节
+
+| 格式 | 怎样添加水印 | 导出后保留什么 |
+| --- | --- | --- |
+| **JPEG** | ImageMagick 通过 WebAssembly 在原图分辨率下合成水印，再按所选质量重新编码。 | 工具会核对像素尺寸、色彩配置、分辨率、色度采样和基线或渐进编码模式。即使质量为 100，文件大小也可能变化。 |
+| **PDF** | pdf-lib 在每一页追加透明水印图块，由浏览器或 PDFium 渲染预览。 | 保留纸张大小、旋转角度和原始图片流。原本可搜索、可选中的正文仍然可用。 |
+
+启用 **清除 EXIF 信息** 时，工具先按方向标记旋转或翻转照片，再清除 EXIF。处理加密或带数字签名的 PDF 时，请打开已解密、未签名的副本。
+
+[架构与技术选型](docs/zh-CN/architecture.md) · [从源码构建](#从源码构建) · [验证与测试](tests/README.zh-CN.md)
 
 ### 隐私与语言
 
@@ -69,7 +79,7 @@ npm ci
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-用浏览器直接打开 `dist-offline/Watermark.html`。架构文档解释了 TypeScript、Web Worker、ImageMagick WASM、pdf-lib 和 PDFium 如何组合成这份单文件应用。[应用源码](src/) · [架构与技术选型](docs/zh-CN/architecture.md) · [构建与分发](docs/zh-CN/verification.md) · [测试指南](tests/README.zh-CN.md)
+用浏览器直接打开 `dist-offline/Watermark.html`。[应用源码](src/) · [构建与分发](docs/zh-CN/verification.md)
 
 <a name="贡献者与许可"></a>
 

@@ -47,18 +47,16 @@
 
 界面会根据浏览器语言偏好自动选择，也可手动切换简体中文、繁體中文、English、日本語、한국어、Español、Français 和 Русский。
 
-## 构建和阅读源码
+## 从源码构建
 
-使用 Vite 支持的 Node.js 发行线，最低版本为 **22.18**。GitHub Actions 使用 Node.js 24。
+使用 Vite 支持的 Node.js 发行线，最低版本为 **22.18**。在仓库根目录运行以下命令。
 
 ```sh
 npm ci
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-用浏览器直接打开 `dist-offline/Watermark.html`。
-
-[应用源码](src/) · [架构与技术选型](docs/zh-CN/architecture.md) · [构建与分发](docs/zh-CN/verification.md) · [测试指南](tests/README.zh-CN.md)
+用浏览器直接打开 `dist-offline/Watermark.html`。架构文档解释了 TypeScript、Web Worker、ImageMagick WASM、pdf-lib 和 PDFium 如何组合成这份单文件应用。[应用源码](src/) · [架构与技术选型](docs/zh-CN/architecture.md) · [构建与分发](docs/zh-CN/verification.md) · [测试指南](tests/README.zh-CN.md)
 
 ## 许可证
 

@@ -47,18 +47,16 @@ Files and settings stay in page memory. Refreshing clears the session. Opening t
 
 The interface starts in your browser’s preferred supported language. You can switch between English, 简体中文, 繁體中文, 日本語, 한국어, Español, Français and Русский.
 
-## Build and explore
+## Build from source
 
-Install Node.js **22.18 or later** in a release line supported by Vite. GitHub Actions uses Node.js 24.
+Use Node.js **22.18 or later** on a Vite-supported release line. Run these commands from the repository root.
 
 ```sh
 npm ci
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-Open `dist-offline/Watermark.html` directly in your browser.
-
-[Application source](src/) · [Architecture and decisions](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Test guide](tests/README.md)
+Open `dist-offline/Watermark.html` directly in your browser. The architecture guide explains how TypeScript, Web Workers, ImageMagick WASM, pdf-lib and PDFium fit into one file. [Source code](src/) · [Architecture](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Testing](tests/README.md)
 
 ## License
 

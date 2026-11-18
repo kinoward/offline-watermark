@@ -1,8 +1,15 @@
-# Watermark
+<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-在浏览器里为 JPG、JPEG 或 PDF 平铺文字水印。每次处理一个文件，另存一份加好水印的副本。
+<p align="center">分享照片或 PDF 前，给副本加上平铺文字水印。<br>
+一个 HTML 文件，本地处理，断网可用。</p>
 
-**[在线使用](https://kinoward.github.io/offline-watermark/)** · **[下载离线 HTML](https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html)** · **[阅读技术实现](docs/zh-CN/architecture.md)** · [English](README.md)
+<p align="center">
+  <strong><a href="https://kinoward.github.io/offline-watermark/">在线使用</a></strong> &nbsp;·&nbsp;
+  <strong><a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a></strong> &nbsp;·&nbsp;
+  <a href="docs/zh-CN/architecture.md">阅读技术实现</a>
+</p>
+
+<p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
 ![Watermark 桌面界面，左侧是加好水印的 JPEG 图片，右侧是水印设置](docs/assets/desktop.jpg)
 

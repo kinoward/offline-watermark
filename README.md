@@ -1,8 +1,15 @@
-# Watermark
+<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-Add a repeating text watermark to a JPG, JPEG or PDF. Process one file at a time in your browser and save a separate copy.
+<p align="center">Add a repeating text watermark to a JPEG or PDF.<br>
+One HTML file runs offline. Your files stay on your device.</p>
 
-**[Open Watermark](https://kinoward.github.io/offline-watermark/)** · **[Download the offline HTML](https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html)** · **[Read the implementation](docs/en/architecture.md)** · [简体中文](README.zh-CN.md)
+<p align="center">
+  <strong><a href="https://kinoward.github.io/offline-watermark/">Open app</a></strong> &nbsp;·&nbsp;
+  <strong><a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download HTML</a></strong> &nbsp;·&nbsp;
+  <a href="docs/en/architecture.md">How it works</a>
+</p>
+
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
 ![Watermark desktop interface with a watermarked JPEG, preview on the left and controls on the right](docs/assets/desktop.jpg)
 

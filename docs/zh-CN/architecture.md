@@ -1,6 +1,6 @@
 # 架构与技术选型
 
-[首页](../../README.zh-CN.md) · [English](../en/architecture.md) · [构建与验证](verification.md)
+[首页](../../README.zh-CN.md) · [English](../en/architecture.md) · [构建与分发](verification.md) · [测试指南](../../tests/README.zh-CN.md)
 
 ## 单 HTML 分发，一次编辑一个文件
 
@@ -38,7 +38,7 @@ flowchart LR
 
 大小范围为 25–200%，密度为 50–300%，透明度为 1–100%。滑块与数字输入同步，各自可以重置。处理 PDF 时隐藏 JPEG 质量和 EXIF 设置。
 
-[图块排版和 EXIF 坐标变换](../../src/layout.ts) · [参数范围和默认值](../../index.html) · [大小与密度测试](../../tests/pdf.test.mjs)
+[图块排版和 EXIF 坐标变换](../../src/layout.ts) · [参数范围和默认值](../../index.html) · [大小与密度测试](../../tests/unit/pdf.test.mjs)
 
 ## JPEG 的重新编码、元数据恢复和核对
 
@@ -46,7 +46,7 @@ flowchart LR
 
 质量 100 表示编码器的最高质量设置。新量化表会改变压缩数据，文件大小和压缩倍率可能随之变化。保留 EXIF 时，原始像素尺寸不变。清除 EXIF 时，先将镜像或旋转应用到像素，再移除 EXIF 段。90° 或 270° 旋转可能交换存储的宽和高，显示方向与源图一致。受支持的色彩和密度信息仍会保留。对 CMYK、带不支持标记的复合或 HDR JPEG，以及超过 5000 万像素的图片会提示错误。
 
-[ImageMagick JPEG 编码选项](https://github.com/ImageMagick/Usage-Markdown/blob/main/formats/index.md#writing-jpeg-control-options) · [编码实现](../../src/jpeg.ts) · [标记校验和恢复](../../src/jpeg-metadata.ts) · [JPEG 测试](../../tests/jpeg.test.mjs)
+[ImageMagick JPEG 编码选项](https://github.com/ImageMagick/Usage-Markdown/blob/main/formats/index.md#writing-jpeg-control-options) · [编码实现](../../src/jpeg.ts) · [标记校验和恢复](../../src/jpeg-metadata.ts) · [JPEG 测试](../../tests/unit/jpeg.test.mjs)
 
 ## PDF 逐页追加水印层
 
@@ -54,7 +54,7 @@ flowchart LR
 
 工具检测加密、已签名字段、文档签名时间戳和认证签名，提示换用合适的副本。空白签名字段仍可处理。没有嵌入中日韩字体的源页可能在 PDFium 预览中显示不同，工具会提示并提供通过浏览器打开完整预览的入口。输出保留源文档的字体对象。
 
-[PDF 叠加实现](../../src/pdf.ts) · [PDF 结构测试](../../tests/pdf.test.mjs) · [字体检测](../../src/pdf-fonts.ts)
+[PDF 叠加实现](../../src/pdf.ts) · [PDF 结构测试](../../tests/unit/pdf.test.mjs) · [字体检测](../../src/pdf-fonts.ts)
 
 ## 预览调度和不同设备的交互
 
@@ -70,4 +70,4 @@ JPEG 预览将画布重绘间隔限制在至少 50 毫秒。PDF 等输入停顿 
 
 浏览器支持原生文件和目录选择器时，源文件句柄可用来建议保存对话框的起始位置，最终目录由用户选择。写入前检查所选目录中的同名项，遇到默认名冲突时增加序号，自定义名冲突则提示改名。普通下载的目录和重名处理由浏览器设置决定。授权目录的冲突检查覆盖应用自己的保存流程，浏览器 API 没有提供与其他进程并发时的原子独占创建操作。
 
-[语言匹配](../../src/i18n.ts) · [文件操作](../../src/file-io.ts) · [命名和目录测试](../../tests/file-io.test.mjs)
+[语言匹配](../../src/i18n.ts) · [文件操作](../../src/file-io.ts) · [命名和目录测试](../../tests/unit/file-io.test.mjs)

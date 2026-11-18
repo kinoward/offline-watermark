@@ -5,16 +5,16 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium, firefox, webkit } from 'playwright';
 import { PDFArray, PDFDocument, PDFName, PDFRawStream } from 'pdf-lib';
 import { PDFiumLibrary } from '@hyzyla/pdfium';
-import { inspectJpeg } from '../src/jpeg-metadata.ts';
-import { proofPdf } from './fixtures/proof.mjs';
+import { inspectJpeg } from '../../src/jpeg-metadata.ts';
+import { createSamplePdf } from '../../scripts/sample-pdf.mjs';
 
 const [input = 'dist-offline/Watermark.html', ...requestedBrowsers] = process.argv.slice(2);
 const target = /^https?:\/\//.test(input) ? new URL(input) : pathToFileURL(resolve(input));
 const engines = { chromium, firefox, webkit };
 const browsers = requestedBrowsers.length ? requestedBrowsers : Object.keys(engines);
-const fixturePath = fileURLToPath(new URL('./fixtures/progressive-422-exif.jpg', import.meta.url));
+const fixturePath = fileURLToPath(new URL('../fixtures/progressive-422-exif.jpg', import.meta.url));
 const originalJpeg = await readFile(fixturePath);
-const originalPdf = Buffer.from(await proofPdf());
+const originalPdf = Buffer.from(await createSamplePdf());
 const arrayBuffer = (bytes) => Uint8Array.from(bytes).buffer;
 const originalDetails = inspectJpeg(arrayBuffer(originalJpeg));
 const pdfium = await PDFiumLibrary.init();
@@ -246,7 +246,7 @@ async function pdfFlow(page) {
     ['encrypted.pdf', 'This PDF is encrypted. Decrypt it before importing.'],
     ['signed.pdf', 'This PDF is digitally signed. Use an unsigned copy.'],
   ]) {
-    const bytes = await readFile(new URL('./fixtures/' + file, import.meta.url));
+    const bytes = await readFile(new URL('../fixtures/' + file, import.meta.url));
     await chooseFile(page, file, 'application/pdf', bytes);
     await page.waitForFunction((text) =>
       document.getElementById('preview-message').textContent === text, message

@@ -9,7 +9,7 @@ import {
   supportsDirectorySave,
   supportsNativeOpen,
   validateStem,
-} from '../src/file-io.ts';
+} from '../../src/file-io.ts';
 
 const result = new Blob(['水印内容']);
 

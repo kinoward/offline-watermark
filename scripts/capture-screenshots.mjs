@@ -2,7 +2,7 @@ import { mkdir, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
-import { proofPdf } from '../tests/fixtures/proof.mjs';
+import { createSamplePdf } from './sample-pdf.mjs';
 
 const target = pathToFileURL(resolve(process.argv[2] ?? 'dist-offline/Watermark.html'));
 const directory = resolve(process.argv[3] ?? 'docs/assets');
@@ -31,7 +31,7 @@ try {
         await page.waitForFunction(() => !document.getElementById('image-preview').hidden);
       } else if (name === 'tablet') {
         await page.locator('#file-input').setInputFiles({
-          name: 'Tidal shelf — sample.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await proofPdf()),
+          name: 'Tidal shelf — sample.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await createSamplePdf()),
         });
         await page.locator('#pdf-page-canvas').waitFor();
       }

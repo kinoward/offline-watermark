@@ -27,11 +27,12 @@ Install Node.js **22.18 or later** in a release line supported by Vite. GitHub A
 
 ```sh
 npm ci
-npm test
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-Open `dist-offline/Watermark.html` directly in your browser. [Architecture and decisions](docs/en/architecture.md) · [Build and verification](docs/en/verification.md)
+Open `dist-offline/Watermark.html` directly in your browser.
+
+[Application source](src/) · [Architecture and decisions](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Test guide](tests/README.md)
 
 ## License
 

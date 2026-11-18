@@ -1,9 +1,9 @@
 import { readFile } from 'node:fs/promises';
 import { degrees, PDFDocument, PDFName, PDFNumber, rgb, StandardFonts } from 'pdf-lib';
 
-const coastline = new URL('../../src/comparison-sample.jpg', import.meta.url);
+const coastline = new URL('../src/comparison-sample.jpg', import.meta.url);
 
-export async function proofPdf() {
+export async function createSamplePdf() {
   const pdf = await PDFDocument.create();
   pdf.setTitle('The tidal shelf');
   pdf.setAuthor('Watermark sample');

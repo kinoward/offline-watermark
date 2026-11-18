@@ -21,8 +21,8 @@ Watermark JPEGs and PDFs on your device. Download one HTML file to work offline.
 </p>
 
 <p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-en.svg" width="194" height="40" align="middle" alt="Open Watermark"></a>
-  &nbsp; <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download offline HTML</a> ·
+  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-en.svg" width="194" height="40" alt="Open Watermark"></a><br>
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download offline HTML</a> ·
   <a href="#how-it-works">How it works</a>
 </p>
 

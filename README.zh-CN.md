@@ -21,8 +21,8 @@
 </p>
 
 <p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-zh-CN.svg" width="157" height="40" align="middle" alt="在线打开工具 Watermark"></a>
-  &nbsp; <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a> ·
+  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-zh-CN.svg" width="157" height="40" alt="在线打开工具 Watermark"></a><br>
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a> ·
   <a href="#工作原理">工作原理</a>
 </p>
 

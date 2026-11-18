@@ -26,22 +26,22 @@ Watermark JPEGs and PDFs on your device. Download one HTML file to work offline.
   <a href="#how-it-works">How it works</a>
 </p>
 
-[![Open Watermark. The editor shows a fictional proof of enrollment tiled with “Alder Housing” and “Rental review only”, ready to download.](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
+[![Open Watermark. A U.S. passport specimen in the editor carries the repeating text “Harbor Hotel” and “Booking verification only”.](docs/assets/watermark-workbench-en.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>A student sharing proof of enrollment for a rental application names the housing office and the purpose on the copy.</em> · <a href="docs/assets/watermark-comparison.jpg">Compare the original and the export</a></p>
+<p align="center"><em>A traveler marks a passport copy for a single hotel booking.</em> · <a href="docs/assets/watermark-comparison-en.jpg">Compare the original and the export</a></p>
 
 ## Quick start
 
-Try the controls on the built-in preview, or save the fictional document used above to follow the example. [Sample proof of enrollment (JPEG)](docs/assets/enrollment-sample.jpg)
+Try the controls on the built-in preview, or follow along with the AI-generated U.S. passport specimen shown above. [Save the sample JPEG](docs/assets/passport-us-sample.jpg)
 
 1. **Add file.** Open Watermark and choose one JPG, JPEG or PDF. For offline use, double-click the downloaded `Watermark.html` to open the same editor.
-2. **Set the text.** Enter `Alder Housing` on the first line and `Rental review only` on the second. For your own document, use the actual recipient and purpose. Adjust size, density and opacity in the preview.
-3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `Proof of enrollment_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
+2. **Set the text.** Enter `Harbor Hotel` on the first line and `Booking verification only` on the second. For your own document, use the actual recipient and purpose. Adjust size, density and opacity in the preview.
+3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `passport-us-sample_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
 
 <details>
 <summary>See the editor on other screens</summary>
 
-On desktop, you can drag a file into the preview. On a tablet, you can turn PDF pages while adjusting the watermark. On a phone, tap the compact preview to enlarge it. [Desktop](docs/assets/desktop.jpg) · [Tablet](docs/assets/tablet.jpg) · [Phone](docs/assets/phone.jpg)
+On desktop, you can drag a file into the preview. On a tablet, you can turn PDF pages while adjusting the watermark. On a phone, tap the compact preview to enlarge it. [Desktop](docs/assets/desktop-en.jpg) · [Tablet](docs/assets/tablet-en.jpg) · [Phone](docs/assets/phone-en.jpg)
 
 </details>
 

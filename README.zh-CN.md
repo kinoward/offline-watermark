@@ -26,22 +26,22 @@
   <a href="#工作原理">工作原理</a>
 </p>
 
-[![打开 Watermark。编辑器中，一份虚构的在读证明上铺有 Alder Housing 和 Rental review only 两行水印，右侧可下载生成的副本。](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
+[![打开 Watermark。编辑器中的中国护照信息页样本上，平铺着「海湾酒店」和「仅供预订核验」两行水印。](docs/assets/watermark-workbench-zh-CN.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>租房时提交在读证明，用两行水印写明接收方 Alder Housing 和用途「仅供租房审核」。</em> · <a href="docs/assets/watermark-comparison.jpg">对比原件与加水印的副本</a></p>
+<p align="center"><em>向酒店提供护照副本时，用水印写明酒店名称，注明仅供本次预订核验。</em> · <a href="docs/assets/watermark-comparison-zh-CN.jpg">对比原图与加水印的副本</a></p>
 
 ## 快速上手
 
-打开工具就能在内置样张上试调水印。想复现上图，可以先保存这份虚构的示例材料。[在读证明样张（JPEG）](docs/assets/enrollment-sample.jpg)
+打开工具即可在内置样张上试调水印。想复现上图，可以使用这张由 AI 生成的中国护照信息页样本。[保存示例图片（JPEG）](docs/assets/passport-cn-sample.jpg)
 
 1. **添加文件。** 打开工具，选择一份 JPG、JPEG 或 PDF。需要离线使用时，双击已下载的 `Watermark.html` 就能打开同一个编辑器。
-2. **填写水印文字。** 图中第一行是 `Alder Housing`，第二行是 `Rental review only`。处理自己的材料时，换成实际接收方和用途，再边看预览边调整大小、密度和透明度。
-3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `在读证明_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
+2. **填写水印文字。** 第一行填 `海湾酒店`，第二行填 `仅供预订核验`。处理自己的材料时，换成实际接收方和用途，再边看预览边调整大小、密度和透明度。
+3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `passport-cn-sample_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
 
 <details>
 <summary>查看不同设备上的编辑界面</summary>
 
-桌面端可以把文件拖入预览区，平板上可以边翻 PDF 边调水印，手机上轻点缩略图即可放大。[桌面截图](docs/assets/desktop.jpg) · [平板截图](docs/assets/tablet.jpg) · [手机截图](docs/assets/phone.jpg)
+桌面端可以把文件拖入预览区，平板上可以边翻 PDF 边调水印，手机上轻点缩略图即可放大。[桌面截图](docs/assets/desktop-zh-CN.jpg) · [平板截图](docs/assets/tablet-zh-CN.jpg) · [手机截图](docs/assets/phone-zh-CN.jpg)
 
 </details>
 

@@ -12,18 +12,18 @@ One HTML file runs offline. Your files stay on your device.</p>
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
 <p align="center">
-  <a href="#contributors"><img src="https://img.shields.io/badge/Author-Kino%20Ward-725981?style=flat&amp;labelColor=34332f&amp;logo=github&amp;logoColor=white" height="20" alt="Author: Kino Ward"></a>
-  <a href="#star-history"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=Stars&amp;color=946019" height="20" alt="Current GitHub star count. View star history."></a>
+  <a href="#contributors"><img src="https://img.shields.io/badge/Author-Kino%20Ward-6B50A1?style=flat&amp;labelColor=293747&amp;logo=github&amp;logoColor=white" height="22" alt="Author: Kino Ward"></a>
+  <a href="#star-history"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;labelColor=293747&amp;label=Stars&amp;color=00749D" height="22" alt="Current GitHub star count. View star history."></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=Release&amp;color=3d6758" height="20" alt="Latest release"></a>
-  <a href="#quick-start"><img src="https://img.shields.io/badge/Offline-Single%20HTML-795725?style=flat&amp;labelColor=34332f" height="20" alt="Runs offline as one HTML file"></a>
-  <a href="#license"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=License&amp;color=53616c" height="20" alt="Original code and documentation: MIT"></a>
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?style=flat&amp;labelColor=293747&amp;label=Release&amp;color=186594&amp;logo=semver&amp;logoColor=white" height="22" alt="Latest release"></a>
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Offline-HTML-A44926?style=flat&amp;labelColor=293747&amp;logo=html5&amp;logoColor=white" height="22" alt="Runs offline as one HTML file"></a>
+  <a href="#license"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?style=flat&amp;labelColor=293747&amp;label=License&amp;color=157460" height="22" alt="Original code and documentation: MIT"></a>
   <br>
-  <a href="#export-details"><img src="https://img.shields.io/badge/Files-JPEG%20%2B%20PDF-88512f?style=flat&amp;labelColor=34332f" height="20" alt="Supported formats: JPG, JPEG and PDF"></a>
-  <a href="docs/en/architecture.md"><img src="https://img.shields.io/badge/TypeScript-WASM-325e85?style=flat&amp;labelColor=34332f&amp;logo=typescript&amp;logoColor=white" height="20" alt="Built with TypeScript and WebAssembly"></a>
-  <a href="#privacy-and-languages"><img src="https://img.shields.io/badge/UI-8%20languages-426266?style=flat&amp;labelColor=34332f" height="20" alt="Eight interface languages"></a>
+  <a href="#export-details"><img src="https://img.shields.io/badge/Files-JPG%20%2F%20PDF-92415B?style=flat&amp;labelColor=293747" height="22" alt="Supported formats: JPG, JPEG and PDF"></a>
+  <a href="docs/en/architecture.md"><img src="https://img.shields.io/badge/TypeScript-WASM-4655A0?style=flat&amp;labelColor=293747&amp;logo=typescript&amp;logoColor=white" height="22" alt="Built with TypeScript and WebAssembly"></a>
+  <a href="#privacy-and-languages"><img src="https://img.shields.io/badge/Languages-8-106F78?style=flat&amp;labelColor=293747" height="22" alt="Eight interface languages"></a>
 </p>
 
 ![The same detail from a coastal map, first as the original JPEG and then exported with a diagonal REVIEW COPY watermark](docs/assets/watermark-comparison.jpg)

@@ -17,7 +17,9 @@
 
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
-![Watermark 桌面界面，左侧是加好水印的 JPEG 图片，右侧是水印设置](docs/assets/desktop.jpg)
+![同一幅海岸等高线图的局部，左侧为原始 JPEG，右侧是叠加斜向 REVIEW COPY 水印的导出副本](docs/assets/watermark-comparison.jpg)
+
+<p align="center"><em>左为 JPEG 原图，右为加水印后的同一处细节。</em></p>
 
 ## 给文件加水印
 

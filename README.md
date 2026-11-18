@@ -17,7 +17,9 @@ One HTML file runs offline. Your files stay on your device.</p>
 
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
-![Watermark desktop interface with a watermarked JPEG, preview on the left and controls on the right](docs/assets/desktop.jpg)
+![The same detail from a coastal map, first as the original JPEG and then exported with a diagonal REVIEW COPY watermark](docs/assets/watermark-comparison.jpg)
+
+<p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
 
 ## Watermark a file
 

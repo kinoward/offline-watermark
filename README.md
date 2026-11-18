@@ -21,13 +21,20 @@ One HTML file runs offline. Your files stay on your device.</p>
 
 <p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
 
-## Watermark a file
+## Quick start
 
-1. Open the web app, or download `Watermark.html` and open it in a recent browser. The downloaded file runs offline on its own.
-2. Add a JPG, JPEG or PDF. Enter one or several lines of text and adjust size, density and opacity while watching the preview.
-3. Choose an output name, select **Apply watermark**, then **Download**. Where the browser supports directory access, **Save to folder** lets you choose a destination.
+1. **Open a file.** Launch the web app or double-click the downloaded `Watermark.html` in a recent browser. Choose one JPG, JPEG or PDF.
+2. **Set the watermark.** Type one or more lines of text. Adjust size, density and opacity to see the brick pattern update in the preview. On a phone, tap the thumbnail for a closer look.
+3. **Save a copy.** Choose a filename, select **Apply watermark**, then **Download**. Browsers with directory access also offer **Save to folder**. The copy keeps the original extension and defaults to a name such as `coast_水印版_01.jpg`.
 
-The default filename is `original_水印版_01.ext`. The source extension keeps its original case. On a phone, tap the thumbnail to enlarge it. On a tablet, use the page controls to browse a PDF while editing. [Phone preview](docs/assets/phone.jpg) · [Tablet preview](docs/assets/tablet.jpg)
+<details>
+<summary>See the editor on desktop, tablet and phone</summary>
+
+![Desktop editor with the watermarked coastal map on the left and text and export settings on the right](docs/assets/desktop.jpg)
+
+On desktop, drag a file onto the workbench. On tablet, turn PDF pages while editing. On phones, the settings sit below a compact preview. [Tablet screenshot](docs/assets/tablet.jpg) · [Phone screenshot](docs/assets/phone.jpg)
+
+</details>
 
 | Input | What the export does |
 | --- | --- |

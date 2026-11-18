@@ -15,7 +15,7 @@ jobs:
     container:
       # Official browser and system dependencies, matched to the npm Playwright version.
       image: mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
-      options: --ipc=host
+      options: --ipc=host --user pwuser
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

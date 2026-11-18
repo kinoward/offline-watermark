@@ -21,6 +21,10 @@ One HTML file runs offline. Your files stay on your device.</p>
 
 <p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
 
+<p align="center">
+  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export details</a> · <a href="#build-from-source">Build</a> · <a href="#contributors-and-license">Credits</a>
+</p>
+
 ## Quick start
 
 1. **Open a file.** Launch the web app or double-click the downloaded `Watermark.html` in a recent browser. Choose one JPG, JPEG or PDF.

@@ -21,6 +21,10 @@
 
 <p align="center"><em>左为 JPEG 原图，右为加水印后的同一处细节。</em></p>
 
+<p align="center">
+  <a href="#快速上手">快速上手</a> · <a href="#导出细节">导出细节</a> · <a href="#从源码构建">从源码构建</a> · <a href="#贡献者与许可">贡献者与许可</a>
+</p>
+
 ## 快速上手
 
 1. **打开文件。** 在线使用，或用浏览器打开已下载的 `Watermark.html`。每次选择一个 JPG、JPEG 或 PDF。

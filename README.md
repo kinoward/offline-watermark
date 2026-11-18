@@ -75,4 +75,6 @@ Open `dist-offline/Watermark.html` directly in your browser. The architecture gu
 
 ## License
 
-Watermark’s original code and documentation use the MIT License. Bundled components retain their own licenses, including LGPL libraries in ImageMagick WASM. Each release includes the corresponding ImageMagick source archive and rebuild instructions. [MIT License](LICENSE) · [Third-party notices](THIRD_PARTY.md) · [Release assets](https://github.com/kinoward/offline-watermark/releases/latest)
+**Original code and documentation.** The MIT License permits personal and commercial use. You can modify Watermark, distribute it and sell copies. Keep the copyright notice (© 2026 Watermark contributors) and the permission notice in all copies or substantial portions. The software comes without warranty. The license also limits the liability of the authors and copyright holders. [Full MIT license](LICENSE)
+
+**Redistributing the offline HTML.** The JPEG and PDF libraries have their own terms. `Watermark.html` includes their notices in its source under `third-party-licenses`. ImageMagick WASM statically links several LGPL libraries. The release identified at the top of the HTML provides the matching `ImageMagick-WASM-source.tar.gz` archive with the sources and instructions to rebuild and replace the module. [Third-party notices](THIRD_PARTY.md) · [Rebuild instructions](third-party/imagemagick/README.md) · [Release archives](https://github.com/kinoward/offline-watermark/releases)

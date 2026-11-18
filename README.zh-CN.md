@@ -75,4 +75,6 @@ npm run build:offline -- dist-offline/Watermark.html
 
 ## 开源许可
 
-Watermark 的原创代码和文档采用 MIT 许可证。随包分发的组件沿用各自的许可证，其中包括 ImageMagick WASM 使用的 LGPL 库。每次发行均附带相应的 ImageMagick 源码包和重建说明。[MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY.md) · [发行附件](https://github.com/kinoward/offline-watermark/releases/latest)
+**原创代码与文档。** MIT 许可证允许个人使用和商业使用，也允许修改、分发和销售 Watermark。分发本软件的副本或其中的实质性部分时，须保留版权声明（© 2026 Watermark contributors）和许可声明。软件按现状提供，不附带担保。许可证也载明了作者和版权持有人的责任限制。[MIT 许可证全文](LICENSE)
+
+**分发离线 HTML。** JPEG 和 PDF 处理库各有自己的许可条款。打开 `Watermark.html` 的源码并搜索 `third-party-licenses`，即可查看随附声明。ImageMagick WASM 静态链接了多个 LGPL 库。HTML 文件顶部标有对应的发行版本，可从该版本下载 `ImageMagick-WASM-source.tar.gz`，取得匹配的源码以及重建、替换模块的说明。[第三方许可清单](THIRD_PARTY.md) · [重建说明](third-party/imagemagick/README.md) · [各版本发行附件](https://github.com/kinoward/offline-watermark/releases)

@@ -38,12 +38,11 @@
 2. **填写水印文字。** 第一行填 `海湾酒店`，第二行填 `仅供预订核验`。处理自己的材料时，换成实际接收方和用途，再边看预览边调整大小、密度和透明度。
 3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `passport-cn-sample_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
 
-<details>
-<summary>查看不同设备上的编辑界面</summary>
+### 在不同设备上使用
 
-桌面端可以把文件拖入预览区，平板上可以边翻 PDF 边调水印，手机上轻点缩略图即可放大。[桌面截图](docs/assets/desktop-zh-CN.jpg) · [平板截图](docs/assets/tablet-zh-CN.jpg) · [手机截图](docs/assets/phone-zh-CN.jpg)
-
-</details>
+- **电脑**上可将文件拖入预览区打开。[桌面截图](docs/assets/desktop-zh-CN.jpg)
+- **平板**上可边翻阅 PDF 边调整水印。[平板截图](docs/assets/tablet-zh-CN.jpg)
+- **手机**上轻点缩略图即可放大预览。[手机截图](docs/assets/phone-zh-CN.jpg)
 
 ## 工作原理
 

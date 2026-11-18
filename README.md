@@ -38,12 +38,11 @@ Try the controls on the built-in preview, or follow along with the AI-generated 
 2. **Set the text.** Enter `Harbor Hotel` on the first line and `Booking verification only` on the second. For your own document, use the actual recipient and purpose. Adjust size, density and opacity in the preview.
 3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `passport-us-sample_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
 
-<details>
-<summary>See the editor on other screens</summary>
+### Using the editor on different devices
 
-On desktop, you can drag a file into the preview. On a tablet, you can turn PDF pages while adjusting the watermark. On a phone, tap the compact preview to enlarge it. [Desktop](docs/assets/desktop-en.jpg) · [Tablet](docs/assets/tablet-en.jpg) · [Phone](docs/assets/phone-en.jpg)
-
-</details>
+- **Desktop.** Drag a file into the preview to open it. [Desktop screenshot](docs/assets/desktop-en.jpg)
+- **Tablet.** Turn PDF pages with the watermark settings in view. [Tablet screenshot](docs/assets/tablet-en.jpg)
+- **Phone.** Tap the compact preview to enlarge it. [Phone screenshot](docs/assets/phone-en.jpg)
 
 ## How it works
 

@@ -6,6 +6,8 @@
 
 Some export problems are hard to spot in the watermark preview. A JPEG can look correct while still carrying EXIF data the user asked to remove. Rendering a PDF page as an image can preserve its appearance while losing its searchable text. The tests read the exported files to check EXIF removal, photo orientation and text extraction. The browser tests also open the local HTML with HTTP and HTTPS requests blocked and export both a JPEG and a PDF to check that the downloaded app works offline.
 
+Add a test when a fixed bug could recur or when a change puts file fidelity, privacy or offline use at risk in a way that is easy to miss. A visual check is enough for changes limited to spacing, colors or ordinary wording.
+
 ## Choose a check
 
 | Change | Checks |

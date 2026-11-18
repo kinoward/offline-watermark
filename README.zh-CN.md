@@ -31,7 +31,7 @@
 <p align="center"><em>左为 JPEG 原图，右为加水印后的同一处细节。</em></p>
 
 <p align="center">
-  <a href="#快速上手">快速上手</a> · <a href="#导出细节">导出细节</a> · <a href="#从源码构建">从源码构建</a> · <a href="#贡献者">贡献者</a> · <a href="#开源许可">开源许可</a>
+  <a href="#快速上手">快速上手</a> · <a href="#导出细节">导出</a> · <a href="#从源码构建">构建</a> · <a href="#贡献者">贡献者</a> · <a href="#开源许可">开源许可</a>
 </p>
 
 ## 快速上手
@@ -77,7 +77,7 @@ npm run build:offline -- dist-offline/Watermark.html
 
 <p>
   <img src="https://github.com/kinoward.png?size=96" width="40" height="40" align="middle" alt="">
-  &nbsp; <strong>Kino Ward</strong> · <a href="https://github.com/kinoward">@kinoward</a> · Watermark 作者
+  &nbsp; <strong>Kino Ward</strong> · <a href="https://github.com/kinoward">@kinoward</a>
 </p>
 
 [全部贡献者](https://github.com/kinoward/offline-watermark/graphs/contributors) · [反馈问题](https://github.com/kinoward/offline-watermark/issues)
@@ -93,7 +93,7 @@ npm run build:offline -- dist-offline/Watermark.html
   </a>
 </p>
 
-只有一个日期有 Star 记录时，图中只显示一个点。随着更多日期有了记录，就能看到趋势线。[查看交互图表](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+页首徽章显示当前的 Star 数量。仓库在不同日期收到 Star 后，图中就会出现趋势线。[查看交互图表](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
 
 ## 开源许可
 

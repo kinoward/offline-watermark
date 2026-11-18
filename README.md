@@ -31,7 +31,7 @@ One HTML file runs offline. Your files stay on your device.</p>
 <p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
 
 <p align="center">
-  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export details</a> · <a href="#build-from-source">Build</a> · <a href="#contributors">Contributors</a> · <a href="#license">License</a>
+  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export</a> · <a href="#build-from-source">Build</a> · <a href="#contributors">Contributors</a> · <a href="#license">License</a>
 </p>
 
 ## Quick start
@@ -77,7 +77,7 @@ Open `dist-offline/Watermark.html` directly in your browser. The architecture gu
 
 <p>
   <img src="https://github.com/kinoward.png?size=96" width="40" height="40" align="middle" alt="">
-  &nbsp; <strong>Kino Ward</strong> · <a href="https://github.com/kinoward">@kinoward</a> · Creator of Watermark
+  &nbsp; <strong>Kino Ward</strong> · <a href="https://github.com/kinoward">@kinoward</a>
 </p>
 
 [All contributors](https://github.com/kinoward/offline-watermark/graphs/contributors) · [Report an issue](https://github.com/kinoward/offline-watermark/issues)
@@ -93,7 +93,7 @@ Open `dist-offline/Watermark.html` directly in your browser. The architecture gu
   </a>
 </p>
 
-With stars on only one date, the chart shows a point. Stars on later dates give it a trend line. [Explore the interactive chart](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+The badge at the top shows the current count. A trend line appears once the project has received stars on different dates. [Explore the interactive chart](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
 
 ## License
 

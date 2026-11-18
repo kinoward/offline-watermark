@@ -41,7 +41,11 @@
 - **JPG 和 JPEG** 会按所选质量重新编码。工具会核对像素尺寸、色彩配置、分辨率、色度采样，以及基线或渐进编码模式。即使质量设为 100，文件大小和压缩率也可能变化。启用 **清除 EXIF 信息** 时，工具先按照片的方向标记旋转或翻转像素，再移除 EXIF。
 - **PDF** 的每一页都会加上平铺水印，保留原有纸张大小、旋转角度和可搜索的正文。处理加密或带数字签名的 PDF 时，请打开已解密、未签名的副本。
 
-Watermark 在浏览器里处理文件，刷新会清空任务与设置。在线版由 GitHub Pages 托管，GitHub 会记录访客 IP。全程断网使用时，打开已下载的 HTML 即可。界面根据浏览器语言初始化，支持简体中文、繁體中文、English、日本語、한국어、Español、Français 和 Русский。[GitHub Pages 数据收集说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
+### 隐私与语言
+
+文件和设置只保存在页面内存里，刷新即清空。在线版由 GitHub Pages 提供，GitHub 会记录访客 IP。如需全程断网使用，先下载 HTML，再从本地打开即可。[GitHub Pages 数据收集说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
+
+界面会根据浏览器语言偏好自动选择，也可手动切换简体中文、繁體中文、English、日本語、한국어、Español、Français 和 Русский。
 
 ## 构建和阅读源码
 

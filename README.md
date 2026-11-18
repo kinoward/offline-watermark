@@ -9,6 +9,12 @@ One HTML file runs offline. Your files stay on your device.</p>
   <a href="docs/en/architecture.md">How it works</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?label=release&amp;labelColor=34332f&amp;color=80521e" alt="Latest release"></a>
+  <a href="https://github.com/kinoward/offline-watermark"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;label=stars&amp;labelColor=34332f&amp;color=376658" alt="GitHub star count"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?label=license&amp;labelColor=34332f&amp;color=4b5966" alt="Project license: MIT"></a>
+</p>
+
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
 ![Watermark desktop interface with a watermarked JPEG, preview on the left and controls on the right](docs/assets/desktop.jpg)

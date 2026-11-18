@@ -9,6 +9,12 @@
   <a href="docs/zh-CN/architecture.md">阅读技术实现</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?label=release&amp;labelColor=34332f&amp;color=80521e" alt="最新发行版本"></a>
+  <a href="https://github.com/kinoward/offline-watermark"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;label=stars&amp;labelColor=34332f&amp;color=376658" alt="GitHub Star 数量"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?label=license&amp;labelColor=34332f&amp;color=4b5966" alt="项目许可证 MIT"></a>
+</p>
+
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
 ![Watermark 桌面界面，左侧是加好水印的 JPEG 图片，右侧是水印设置](docs/assets/desktop.jpg)

@@ -9,13 +9,22 @@
   <a href="docs/zh-CN/architecture.md">阅读技术实现</a>
 </p>
 
+<p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
+
 <p align="center">
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?label=release&amp;labelColor=34332f&amp;color=80521e" alt="最新发行版本"></a>
-  <a href="https://github.com/kinoward/offline-watermark"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;label=stars&amp;labelColor=34332f&amp;color=376658" alt="GitHub Star 数量"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?label=license&amp;labelColor=34332f&amp;color=4b5966" alt="项目许可证 MIT"></a>
+  <a href="#贡献者"><img src="https://img.shields.io/badge/%E4%BD%9C%E8%80%85-Kino%20Ward-725981?style=flat&amp;labelColor=34332f&amp;logo=github&amp;logoColor=white" height="20" alt="作者 Kino Ward"></a>
+  <a href="#star-历史"><img src="https://img.shields.io/github/stars/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=Stars&amp;color=946019" height="20" alt="当前 GitHub Star 数量，点击查看历史趋势"></a>
 </p>
 
-<p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
+<p align="center">
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest"><img src="https://img.shields.io/github/v/release/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=%E7%89%88%E6%9C%AC&amp;color=3d6758" height="20" alt="最新发行版本"></a>
+  <a href="#快速上手"><img src="https://img.shields.io/badge/%E7%A6%BB%E7%BA%BF-%E5%8D%95%E4%B8%AA%20HTML-795725?style=flat&amp;labelColor=34332f" height="20" alt="单 HTML 文件，断网可用"></a>
+  <a href="#开源许可"><img src="https://img.shields.io/github/license/kinoward/offline-watermark?style=flat&amp;labelColor=34332f&amp;label=%E8%AE%B8%E5%8F%AF&amp;color=53616c" height="20" alt="原创代码与文档采用 MIT 许可证"></a>
+  <br>
+  <a href="#导出细节"><img src="https://img.shields.io/badge/%E6%A0%BC%E5%BC%8F-JPEG%20%2B%20PDF-88512f?style=flat&amp;labelColor=34332f" height="20" alt="支持 JPG、JPEG、PDF"></a>
+  <a href="docs/zh-CN/architecture.md"><img src="https://img.shields.io/badge/TypeScript-WASM-325e85?style=flat&amp;labelColor=34332f&amp;logo=typescript&amp;logoColor=white" height="20" alt="使用 TypeScript 和 WebAssembly 构建"></a>
+  <a href="#隐私与语言"><img src="https://img.shields.io/badge/%E7%95%8C%E9%9D%A2-8%20%E7%A7%8D%E8%AF%AD%E8%A8%80-426266?style=flat&amp;labelColor=34332f" height="20" alt="八种界面语言"></a>
+</p>
 
 ![同一幅海岸等高线图的局部，左侧为原始 JPEG，右侧是叠加斜向 REVIEW COPY 水印的导出副本](docs/assets/watermark-comparison.jpg)
 

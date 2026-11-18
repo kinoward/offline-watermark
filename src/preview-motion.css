@@ -1,0 +1,15 @@
+@media (prefers-reduced-motion: no-preference) {
+  #preview-surface[data-preview-motion="enter"]::backdrop {
+    animation: viewer-fade-in 200ms ease-out both;
+  }
+  #preview-surface[data-preview-motion="exit"]::backdrop {
+    animation: viewer-fade-in 165ms ease-in reverse both;
+  }
+  #preview-surface[data-preview-motion="enter"] :is(.viewer-bar, .pdf-pager) > * {
+    animation: viewer-fade-in 140ms ease-out both;
+  }
+  #preview-surface[data-preview-motion="exit"] :is(.viewer-bar, .pdf-pager) > * {
+    animation: viewer-fade-in 110ms ease-in reverse both;
+  }
+  @keyframes viewer-fade-in { from { opacity: 0; } to { opacity: 1; } }
+}

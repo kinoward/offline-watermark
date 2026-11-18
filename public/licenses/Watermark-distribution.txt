@@ -1,0 +1,13 @@
+Watermark
+
+Watermark uses ImageMagick WebAssembly with statically linked libraries.
+These include libde265, GLib, libheif, liblqr and LibRaw, which are available
+under the GNU Lesser General Public License. Their copyright notices and
+license terms are in ImageMagick-NOTICE.txt below. You may modify those
+libraries and reverse engineer the combined work to debug those changes.
+
+The corresponding source and rebuild instructions are available for the
+release listed above, alongside the complete Watermark application source.
+
+PDFium and the other bundled libraries are covered by their own notices
+below. Watermark's original code and documentation use the MIT License.

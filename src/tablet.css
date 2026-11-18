@@ -1,0 +1,156 @@
+/* Tablet windows use the same controls and file as the phone and desktop workbenches. */
+html[data-layout="tablet"] {
+  --bar: 58px;
+  --desk-space: clamp(10px, 1.6vw, 20px);
+  --side: clamp(310px, 32vw, 400px);
+
+  .topbar-inner { height: var(--bar); padding-inline: max(var(--desk-space), env(safe-area-inset-left)) max(var(--desk-space), env(safe-area-inset-right)); }
+  .workspace {
+    height: calc(min(100dvh, var(--editor-viewport, 100dvh)) - var(--bar) - 1px - env(safe-area-inset-top));
+    min-height: 0;
+    grid-template: minmax(0,1fr) auto / minmax(0,1fr) calc(var(--side) * var(--inspector-open, 1));
+    padding-inline: max(var(--desk-space), env(safe-area-inset-left)) max(var(--desk-space), env(safe-area-inset-right));
+    padding-bottom: max(var(--desk-space), env(safe-area-inset-bottom));
+  }
+  .preview-card { grid-area: 1 / 1 / span 2; }
+  .preview-head, .settings > .card-head { min-height: 54px; }
+  .preview-head { padding-inline: 14px; }
+  .preview-head h1, #settings-title { font-size: 17px; }
+  #language-select, #language-list [role="option"], #mobile-settings, #desktop-import-slot .import-button,
+  .reset-button, .value-field input, .range-field > input[type="range"], #desktop-codec summary, .file-field input {
+    min-height: 44px;
+  }
+  .reset-button, .value-field input { min-width: 44px; }
+  input[type="number"], .file-field input, textarea { font-size: 16px; }
+  textarea { min-height: 78px; resize: vertical; }
+  :is(button, summary) { -webkit-tap-highlight-color: rgb(248 189 101 / 15%); }
+
+  /* The board is tappable; import and paging have their own touch targets. */
+  #preview-surface:not(:modal) #expand-preview {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+  #expand-preview:focus-visible { outline-offset: -4px; }
+  #preview-surface:modal {
+    --gutter-x: max(3vw, 20px, env(safe-area-inset-left), env(safe-area-inset-right));
+    --gutter-y: max(3dvh, 20px, env(safe-area-inset-top), env(safe-area-inset-bottom));
+    --viewer-width: calc(100vw - 2 * var(--gutter-x));
+  }
+  .expand-hint {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 9px; border: 1px solid #77786b; border-radius: 6px;
+    background: #20211deb; color: #f0ede2; font-size: 12px; font-weight: 550;
+  }
+  .expand-hint .icon { width: 14px; height: 14px; }
+  .start-import-slot { z-index: 1; }
+  .start-import-slot .import-hint { display: inline; }
+  .start-import-slot .drop-hint { display: none; }
+  .board-br { display: none; }
+  .preview-meta { min-height: 36px; }
+  .preview-link { min-height: 44px; text-align: end; }
+  #preview-surface:not(:modal) .pdf-pager:not([hidden]) {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    flex: none; min-height: 48px; padding: 2px 8px; background: #22231f; border-top: 1px solid var(--desk-line);
+  }
+  .pdf-pager .button { min-width: 58px; }
+  .workspace[data-inspector=closed] .tool-rail { display: none; }
+  .workspace[data-inspector=closed] .preview-card { grid-area: 1 / 1; }
+  .tool-rail { align-self: stretch; min-height: 0; }
+  .settings-body { scroll-padding-block: 16px; }
+  .range-field input::-webkit-slider-thumb { width: 20px; height: 20px; }
+  .range-field input::-moz-range-thumb { width: 20px; height: 20px; }
+  .value-field { padding-inline: 4px 6px; }
+  .field-label { font-size: 14px; }
+  .layout-fields .range-field { padding-block: 2px; }
+  .layout-fields .field-label { gap: 4px; }
+  #desktop-export-panel { display: none; }
+  [data-has-file=true] #desktop-export-panel {
+    display: block; margin: 12px 0 0; padding: 0; border: 0; border-radius: 7px; background: transparent;
+  }
+  [data-has-file=true] #desktop-export-panel:not(:has(#desktop-codec:not([hidden]))) { display: none; }
+  #desktop-export-panel .desktop-export-head { display: none; }
+  #desktop-codec { margin: 0; border: 1px solid var(--desk-line); border-radius: 7px; background: #20211e; }
+  #desktop-codec summary { padding: 4px 11px; gap: 8px; font-size: 13px; }
+  #desktop-codec #jpeg-settings { border: 0; border-top: 1px solid var(--desk-line); border-radius: 0 0 7px 7px; margin: 0; padding: 8px 12px 12px; }
+
+  .workspace[data-has-file=true][data-inspector=open] .tool-rail { border-radius: 12px 12px 0 0; border-bottom: 0; }
+  .workspace > .settings-action {
+    grid-area: 2 / 2; margin: 0; gap: 10px;
+    border: 1px solid var(--desk-line); border-radius: 0 0 12px 12px; padding: 12px 15px;
+  }
+  .workspace[data-has-file=false] > .settings-action:not(:has(.notice:not([hidden]))) { display: none; }
+  .workspace[data-inspector=closed] > .settings-action { grid-area: 2 / 1; }
+  .workspace[data-has-file=true] #dock-info { display: grid; gap: 6px; }
+  #file-notice:not([data-tone="success"]) .file-size { display: none; }
+  #file-notice .file-size { flex: none; }
+  .dock-info #export-name-field { display: grid; gap: 5px; }
+  .dock-info .file-field { width: 100%; max-width: none; }
+  .dock-info .file-field input { width: 100%; }
+  .file-field input::placeholder { color: #b2b3a8; opacity: 1; }
+  .workspace .export-actions { margin: 0; }
+  .workspace .export-actions .button { min-height: 46px; font-size: 14px; }
+}
+
+/* In portrait and narrower split windows, the editor and preview share one scroll area. */
+@media (orientation: portrait), (max-width: 859px) {
+  html[data-layout="tablet"] {
+    .workspace, .workspace[data-inspector] {
+      grid-template: minmax(0,1fr) auto / minmax(0,1fr);
+      gap: 0;
+      padding-inline: 0; padding-bottom: 0;
+    }
+    .editor-panes {
+      display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; scroll-padding-block: 12px;
+      padding: 0 max(var(--desk-space),env(safe-area-inset-right)) var(--desk-space) max(var(--desk-space),env(safe-area-inset-left));
+    }
+    .preview-card { flex: 1 0 clamp(274px, 32dvh, 410px); }
+    .preview-board { --stage-padding: 12px; }
+    .preview-card:has(.pdf-pager:not([hidden])) { flex-basis: clamp(330px, 38dvh, 456px); }
+    .tool-rail, .workspace[data-has-file=true][data-inspector=open] .tool-rail {
+      flex: none; width: 100%; max-height: none; border: 1px solid var(--desk-line); border-radius: 12px;
+    }
+    .settings, .settings-body { overflow: visible; }
+    .settings-body {
+      display: grid; grid-template: auto minmax(0,1fr) / minmax(0,.92fr) minmax(0,1.08fr);
+      align-items: start; gap: 0 clamp(16px, 2.4vw, 32px); padding: 14px 18px 16px;
+    }
+    .settings > .card-head { min-height: 48px; }
+    .text-field { grid-area: 1 / 1; margin: 0; }
+    textarea { height: clamp(96px, 13vh, 150px); }
+    .layout-fields { grid-area: 1 / 2 / span 2; }
+    #desktop-export-panel { grid-area: 2 / 1; }
+    .workspace > .settings-action, .workspace[data-inspector=closed] > .settings-action {
+      grid-area: 2 / 1; display: grid; grid-template-columns: minmax(0,1fr) auto;
+      align-items: end; gap: 14px; border-width: 1px 0 0; border-radius: 0;
+      padding: 10px max(var(--desk-space),env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(var(--desk-space),env(safe-area-inset-left));
+    }
+    .workspace[data-has-file=false] > .settings-action { grid-template-columns: minmax(0,1fr); }
+    .dock-info #export-name-field { display: flex; align-items: center; gap: 9px; }
+    .dock-info .file-field { max-width: 460px; }
+    .export-actions { align-self: center; }
+    .workspace .export-actions .primary { min-width: clamp(110px, 20vw, 210px); }
+    .workspace[data-preview-away] #quick-preview { display: inline-flex; flex: 0 0 46px; width: 46px; }
+  }
+}
+@media (max-width: 740px) {
+  html[data-layout="tablet"] {
+    .settings-body { padding-inline: 12px; column-gap: 14px; }
+    .topbar-actions { gap: 6px; }
+    #desktop-toggle-slot { padding-left: 6px; }
+    .dock-info #export-name-field { display: grid; }
+    .workspace .export-actions .button { padding-inline: 9px; }
+    .workspace > .settings-action:has(#download:not([hidden])) { grid-template-columns: minmax(0,1fr); gap: 7px; }
+    .settings-action:has(#download:not([hidden])) #export-name-field { display: flex; }
+    .settings-action:has(#download:not([hidden])) .export-actions { align-self: stretch; }
+  }
+}

@@ -1,7 +1,7 @@
 <h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-<p align="center">分享照片或 PDF 前，给副本加上平铺文字水印。<br>
-一个 HTML 文件，本地处理，断网可用。</p>
+<p align="center"><strong>给 JPEG 照片或 PDF 的每一页加上文字水印。</strong><br>
+文件在浏览器本地处理。下载一个 HTML 文件，断网也能用。</p>
 
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
@@ -21,18 +21,14 @@
 </p>
 
 <p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/">在线使用</a> ·
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线版</a> ·
-  <a href="docs/zh-CN/architecture.md">技术实现</a>
+  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-zh-CN.svg" width="157" height="40" align="middle" alt="在线打开工具 Watermark"></a>
+  &nbsp; <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a> ·
+  <a href="#工作原理">工作原理</a>
 </p>
 
-![同一幅海岸等高线图的局部，左侧为原始 JPEG，右侧是叠加斜向 REVIEW COPY 水印的导出副本](docs/assets/watermark-comparison.jpg)
+[![打开 Watermark。编辑器中，山脊版画上铺有 REVIEW COPY 水印，右侧可下载生成的 JPEG。](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>左为 JPEG 原图，右为加水印后的同一处细节。</em></p>
-
-<p align="center">
-  <a href="#快速上手">快速上手</a> · <a href="#导出细节">导出</a> · <a href="#从源码构建">构建</a> · <a href="#贡献者">贡献者</a> · <a href="#开源许可">开源许可</a>
-</p>
+<p align="center"><em>山脊版画上的文字水印，不透明度为 34%。</em> · <a href="docs/assets/watermark-comparison.jpg">查看海岸地图的原图与导出对照</a></p>
 
 ## 快速上手
 

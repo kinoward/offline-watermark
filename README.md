@@ -1,7 +1,7 @@
 <h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-<p align="center">Add a repeating text watermark to a JPEG or PDF.<br>
-One HTML file runs offline. Your files stay on your device.</p>
+<p align="center"><strong>Watermark a JPEG photo or every page of a PDF.</strong><br>
+Your file stays in your browser. Download one HTML file to work offline.</p>
 
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
@@ -21,18 +21,14 @@ One HTML file runs offline. Your files stay on your device.</p>
 </p>
 
 <p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/">Open app</a> ·
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download HTML</a> ·
-  <a href="docs/en/architecture.md">Internals</a>
+  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-en.svg" width="194" height="40" align="middle" alt="Open Watermark"></a>
+  &nbsp; <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download offline HTML</a> ·
+  <a href="#how-it-works">How it works</a>
 </p>
 
-![The same detail from a coastal map, first as the original JPEG and then exported with a diagonal REVIEW COPY watermark](docs/assets/watermark-comparison.jpg)
+[![Open Watermark. The editor shows REVIEW COPY tiled across a mountain print and the finished JPEG ready to download.](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
-
-<p align="center">
-  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export</a> · <a href="#build-from-source">Build</a> · <a href="#contributors">Contributors</a> · <a href="#license">License</a>
-</p>
+<p align="center"><em>A ridgeline print with the watermark set to 34% opacity.</em> · <a href="docs/assets/watermark-comparison.jpg">See a before-and-after on a coastal map</a></p>
 
 ## Quick start
 

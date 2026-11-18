@@ -1,7 +1,7 @@
 <h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-<p align="center"><strong>给 JPEG 照片或 PDF 的每一页加上文字水印。</strong><br>
-文件在浏览器本地处理。下载一个 HTML 文件，断网也能用。</p>
+<p align="center"><strong>分享护照扫描件或在读证明前，把接收方和用途标在副本上。</strong><br>
+在浏览器本地为 JPEG 图片或 PDF 的每一页添加平铺文字水印。下载一个 HTML 文件，断网也能用。</p>
 
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
@@ -26,17 +26,17 @@
   <a href="#工作原理">工作原理</a>
 </p>
 
-[![打开 Watermark。编辑器中，山脊版画上铺有 REVIEW COPY 水印，右侧可下载生成的 JPEG。](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
+[![打开 Watermark。编辑器中，一份虚构的在读证明上铺有 Alder Housing 和 Rental review only 两行水印，右侧可下载生成的副本。](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>山脊版画上的文字水印，不透明度为 34%。</em> · <a href="docs/assets/watermark-comparison.jpg">查看海岸地图的原图与导出对照</a></p>
+<p align="center"><em>租房时提交在读证明，用两行水印写明接收方 Alder Housing 和用途「仅供租房审核」。</em> · <a href="docs/assets/watermark-comparison.jpg">对比原件与加水印的副本</a></p>
 
 ## 快速上手
 
-打开工具就能在内置样张上试调水印。给自己的文件加水印只需三步。
+打开工具就能在内置样张上试调水印。想复现上图，可以先保存这份虚构的示例材料。[在读证明样张（JPEG）](docs/assets/enrollment-sample.jpg)
 
 1. **添加文件。** 打开工具，选择一份 JPG、JPEG 或 PDF。需要离线使用时，双击已下载的 `Watermark.html` 就能打开同一个编辑器。
-2. **填写水印文字。** 试试「仅供审阅」，也可以分两行写上收件人和日期。边看预览边调整大小、密度和透明度。
-3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `海岸_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
+2. **填写水印文字。** 图中第一行是 `Alder Housing`，第二行是 `Rental review only`。处理自己的材料时，换成实际接收方和用途，再边看预览边调整大小、密度和透明度。
+3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `在读证明_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
 
 <details>
 <summary>查看不同设备上的编辑界面</summary>

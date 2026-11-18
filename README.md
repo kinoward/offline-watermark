@@ -1,7 +1,7 @@
 <h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
 
-<p align="center"><strong>Watermark a JPEG photo or every page of a PDF.</strong><br>
-Your file stays in your browser. Download one HTML file to work offline.</p>
+<p align="center"><strong>Mark a passport scan or proof of enrollment with the recipient and purpose before sharing.</strong><br>
+Watermark JPEGs and PDFs on your device. Download one HTML file to work offline.</p>
 
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
@@ -26,17 +26,17 @@ Your file stays in your browser. Download one HTML file to work offline.</p>
   <a href="#how-it-works">How it works</a>
 </p>
 
-[![Open Watermark. The editor shows REVIEW COPY tiled across a mountain print and the finished JPEG ready to download.](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
+[![Open Watermark. The editor shows a fictional proof of enrollment tiled with “Alder Housing” and “Rental review only”, ready to download.](docs/assets/watermark-workbench.jpg)](https://kinoward.github.io/offline-watermark/)
 
-<p align="center"><em>A ridgeline print with the watermark set to 34% opacity.</em> · <a href="docs/assets/watermark-comparison.jpg">See a before-and-after on a coastal map</a></p>
+<p align="center"><em>A student sharing proof of enrollment for a rental application names the housing office and the purpose on the copy.</em> · <a href="docs/assets/watermark-comparison.jpg">Compare the original and the export</a></p>
 
 ## Quick start
 
-The editor opens with a sample image so you can try the controls before choosing a file.
+Try the controls on the built-in preview, or save the fictional document used above to follow the example. [Sample proof of enrollment (JPEG)](docs/assets/enrollment-sample.jpg)
 
 1. **Add file.** Open Watermark and choose one JPG, JPEG or PDF. For offline use, double-click the downloaded `Watermark.html` to open the same editor.
-2. **Set the text.** Try `REVIEW COPY`, or use two lines for a recipient and a date. Adjust size, density and opacity while watching the preview.
-3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `coast_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
+2. **Set the text.** Enter `Alder Housing` on the first line and `Rental review only` on the second. For your own document, use the actual recipient and purpose. Adjust size, density and opacity in the preview.
+3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `Proof of enrollment_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
 
 <details>
 <summary>See the editor on other screens</summary>

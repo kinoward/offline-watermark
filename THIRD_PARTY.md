@@ -13,6 +13,6 @@ The [MIT License](LICENSE) applies to Watermark’s original code and documentat
 | [pako](https://github.com/nodeca/pako/tree/1.0.11) | 1.0.11 | PDF 与内部 PNG 的压缩 / Compression in PDF and internal PNG code. [MIT](public/licenses/pako.txt) · [Zlib port](public/licenses/pako-zlib.txt) |
 | [tslib](https://github.com/microsoft/tslib) | 1.14.1 | TypeScript 辅助代码 / TypeScript helpers. [Notice](public/licenses/tslib.txt) |
 
-The sample artwork is original. The JPEG test photos use generated pixels. The progressive test image embeds the CC0 sRGB-v4 ICC profile from [Compact ICC Profiles](https://github.com/saucecontrol/Compact-ICC-Profiles). The PDF samples use generated content, including a test-only self-signed certificate for the signed fixture. [Sample provenance](tests/fixtures/README.md)
+The sample artwork is original. The [proof of enrollment](docs/assets/enrollment-sample.jpg) shown in the README uses a fictional school, student and record number. The JPEG test photos use generated pixels. The progressive test image embeds the CC0 sRGB-v4 ICC profile from [Compact ICC Profiles](https://github.com/saucecontrol/Compact-ICC-Profiles). The PDF samples use generated content, including a test-only self-signed certificate for the signed fixture. [Sample provenance](tests/fixtures/README.md)
 
-样张美术为项目原创。JPEG 夹具中的像素由程序生成，渐进式测试图内含 [Compact ICC Profiles](https://github.com/saucecontrol/Compact-ICC-Profiles) 的 CC0 sRGB-v4 配置。PDF 样本内容由程序生成，签名样本使用测试用途的自签名证书。[样本来源](tests/fixtures/README.md)
+样张美术为项目原创。README 展示的[在读证明](docs/assets/enrollment-sample.jpg)使用虚构的院校、学生和学籍编号。JPEG 夹具中的像素由程序生成，渐进式测试图内含 [Compact ICC Profiles](https://github.com/saucecontrol/Compact-ICC-Profiles) 的 CC0 sRGB-v4 配置。PDF 样本内容由程序生成，签名样本使用测试用途的自签名证书。[样本来源](tests/fixtures/README.md)

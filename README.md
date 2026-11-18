@@ -3,12 +3,6 @@
 <p align="center">Add a repeating text watermark to a JPEG or PDF.<br>
 One HTML file runs offline. Your files stay on your device.</p>
 
-<p align="center">
-  <strong><a href="https://kinoward.github.io/offline-watermark/">Open app</a></strong> &nbsp;·&nbsp;
-  <strong><a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download HTML</a></strong> &nbsp;·&nbsp;
-  <a href="docs/en/architecture.md">How it works</a>
-</p>
-
 <p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
 <p align="center">
@@ -24,6 +18,12 @@ One HTML file runs offline. Your files stay on your device.</p>
   <a href="#export-details"><img src="https://img.shields.io/badge/Files-JPG%20%2F%20PDF-92415B?style=flat&amp;labelColor=293747" height="22" alt="Supported formats: JPG, JPEG and PDF"></a>
   <a href="docs/en/architecture.md"><img src="https://img.shields.io/badge/TypeScript-WASM-4655A0?style=flat&amp;labelColor=293747&amp;logo=typescript&amp;logoColor=white" height="22" alt="Built with TypeScript and WebAssembly"></a>
   <a href="#privacy-and-languages"><img src="https://img.shields.io/badge/Languages-8-106F78?style=flat&amp;labelColor=293747" height="22" alt="Eight interface languages"></a>
+</p>
+
+<p align="center">
+  <a href="https://kinoward.github.io/offline-watermark/">Open app</a> ·
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download HTML</a> ·
+  <a href="docs/en/architecture.md">Internals</a>
 </p>
 
 ![The same detail from a coastal map, first as the original JPEG and then exported with a diagonal REVIEW COPY watermark](docs/assets/watermark-comparison.jpg)

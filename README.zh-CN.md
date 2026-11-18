@@ -3,12 +3,6 @@
 <p align="center">分享照片或 PDF 前，给副本加上平铺文字水印。<br>
 一个 HTML 文件，本地处理，断网可用。</p>
 
-<p align="center">
-  <strong><a href="https://kinoward.github.io/offline-watermark/">在线使用</a></strong> &nbsp;·&nbsp;
-  <strong><a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a></strong> &nbsp;·&nbsp;
-  <a href="docs/zh-CN/architecture.md">阅读技术实现</a>
-</p>
-
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
 <p align="center">
@@ -24,6 +18,12 @@
   <a href="#导出细节"><img src="https://img.shields.io/badge/%E6%A0%BC%E5%BC%8F-JPG%20%2F%20PDF-92415B?style=flat&amp;labelColor=293747" height="22" alt="支持 JPG、JPEG、PDF"></a>
   <a href="docs/zh-CN/architecture.md"><img src="https://img.shields.io/badge/TypeScript-WASM-4655A0?style=flat&amp;labelColor=293747&amp;logo=typescript&amp;logoColor=white" height="22" alt="使用 TypeScript 和 WebAssembly 构建"></a>
   <a href="#隐私与语言"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-8-106F78?style=flat&amp;labelColor=293747" height="22" alt="八种界面语言"></a>
+</p>
+
+<p align="center">
+  <a href="https://kinoward.github.io/offline-watermark/">在线使用</a> ·
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线版</a> ·
+  <a href="docs/zh-CN/architecture.md">技术实现</a>
 </p>
 
 ![同一幅海岸等高线图的局部，左侧为原始 JPEG，右侧是叠加斜向 REVIEW COPY 水印的导出副本](docs/assets/watermark-comparison.jpg)

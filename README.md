@@ -58,6 +58,8 @@ npm run build:offline -- dist-offline/Watermark.html
 
 Open `dist-offline/Watermark.html` directly in your browser. The architecture guide explains how TypeScript, Web Workers, ImageMagick WASM, pdf-lib and PDFium fit into one file. [Source code](src/) · [Architecture](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Testing](tests/README.md)
 
-## License
+## Contributors and license
 
-Watermark’s original code and documentation use the MIT License. The HTML includes ImageMagick WASM with LGPL libraries and other separately licensed components. Each Release includes the matching ImageMagick source archive and rebuild instructions. [MIT License](LICENSE) · [Third-party notices](THIRD_PARTY.md) · [Releases](https://github.com/kinoward/offline-watermark/releases)
+Created by [Kino Ward (@kinoward)](https://github.com/kinoward). [All contributors](https://github.com/kinoward/offline-watermark/graphs/contributors) · [Report an issue](https://github.com/kinoward/offline-watermark/issues)
+
+Watermark’s original code and documentation use the MIT License. Bundled components retain their own licenses, including LGPL libraries in ImageMagick WASM. Each release includes the corresponding ImageMagick source archive and rebuild instructions. [MIT License](LICENSE) · [Third-party notices](THIRD_PARTY.md) · [Release assets](https://github.com/kinoward/offline-watermark/releases/latest)

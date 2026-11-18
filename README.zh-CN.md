@@ -58,6 +58,8 @@ npm run build:offline -- dist-offline/Watermark.html
 
 用浏览器直接打开 `dist-offline/Watermark.html`。架构文档解释了 TypeScript、Web Worker、ImageMagick WASM、pdf-lib 和 PDFium 如何组合成这份单文件应用。[应用源码](src/) · [架构与技术选型](docs/zh-CN/architecture.md) · [构建与分发](docs/zh-CN/verification.md) · [测试指南](tests/README.zh-CN.md)
 
-## 许可证
+## 贡献者与许可
 
-Watermark 的原创代码和文档采用 MIT。HTML 内含带 LGPL 库的 ImageMagick WASM 和其他独立授权的组件。每个 Release 都附带对应的 ImageMagick 源码包及重建说明。[MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY.md) · [发行列表](https://github.com/kinoward/offline-watermark/releases)
+由 [Kino Ward（@kinoward）](https://github.com/kinoward) 创建。[全部贡献者](https://github.com/kinoward/offline-watermark/graphs/contributors) · [反馈问题](https://github.com/kinoward/offline-watermark/issues)
+
+Watermark 的原创代码和文档采用 MIT 许可证。随包分发的组件沿用各自的许可证，其中包括 ImageMagick WASM 使用的 LGPL 库。每次发行均附带相应的 ImageMagick 源码包和重建说明。[MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY.md) · [发行附件](https://github.com/kinoward/offline-watermark/releases/latest)

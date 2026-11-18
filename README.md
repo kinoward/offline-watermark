@@ -36,10 +36,10 @@ On desktop, drag a file onto the workbench. On tablet, turn PDF pages while edit
 
 </details>
 
-| Input | What the export does |
-| --- | --- |
-| JPG or JPEG | Re-encodes at the chosen quality and checks image dimensions, color profile, sampling and coding mode. **Remove EXIF** applies the recorded orientation to the pixels before removing the metadata. JPEG file size and compression can change. |
-| PDF | Adds a tiled overlay to each page. Original text stays selectable and searchable. Use a decrypted, unsigned copy for protected or digitally signed PDFs. |
+## Export details
+
+- **JPG and JPEG** are re-encoded at the quality you choose. Watermark checks dimensions, color profile, resolution, chroma sampling and baseline or progressive mode. File size and compression ratio can change, even at quality 100. **Remove EXIF data** applies the photo’s orientation to its pixels before clearing EXIF.
+- **PDF** gets a tiled watermark on every page. Page sizes, rotations and existing searchable text are preserved. For an encrypted or digitally signed PDF, open a decrypted, unsigned copy.
 
 Watermark processes your files in the browser. Refreshing clears the task and settings. The online page is hosted by GitHub Pages, which logs visitor IP addresses. Use the downloaded HTML when you want to work fully offline. The interface follows your browser language and supports simplified and traditional Chinese, English, Japanese, Korean, Spanish, French and Russian. [GitHub Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
 

@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import * as codec from '@imagemagick/magick-wasm';
-import { applyJpegOverlay } from '../src/jpeg.ts';
-import { inspectJpeg } from '../src/jpeg-metadata.ts';
+import { applyJpegOverlay } from '../../src/jpeg.ts';
+import { inspectJpeg } from '../../src/jpeg-metadata.ts';
 
 const { ImageMagick, MagickColor, MagickFormat } = codec;
 const asBuffer = (value) => Uint8Array.from(value).buffer;
-const fixture = (name) => asBuffer(readFileSync(new URL(`./fixtures/${name}.jpg`, import.meta.url)));
+const fixture = (name) => asBuffer(readFileSync(new URL(`../fixtures/${name}.jpg`, import.meta.url)));
 await codec.initializeImageMagick(readFileSync(new URL(import.meta.resolve('@imagemagick/magick-wasm/magick.wasm'))));
 const overlay = ImageMagick.read(new MagickColor('#37373abf'), 54, 26,
   (image) => image.write(MagickFormat.Png, asBuffer));

@@ -1,6 +1,6 @@
 # Architecture and decisions
 
-[Home](../../README.md) · [简体中文](../zh-CN/architecture.md) · [Build and verification](verification.md)
+[Home](../../README.md) · [简体中文](../zh-CN/architecture.md) · [Build and distribution](verification.md) · [Test guide](../../tests/README.md)
 
 ## One file for distribution, one file at a time for editing
 
@@ -38,7 +38,7 @@ The layout splits text into lines, measures the widest line and rotates a transp
 
 The size range is 25–200%, the density range is 50–300%, and the opacity range is 1–100%. Sliders share values with keyboard inputs and individual resets. The interface hides JPEG quality and EXIF tools for PDF work.
 
-[Tile layout and EXIF transforms](../../src/layout.ts) · [Settings and defaults](../../index.html) · [Size and density tests](../../tests/pdf.test.mjs)
+[Tile layout and EXIF transforms](../../src/layout.ts) · [Settings and defaults](../../index.html) · [Size and density tests](../../tests/unit/pdf.test.mjs)
 
 ## JPEG re-encoding and metadata checks
 
@@ -46,7 +46,7 @@ Browser canvas encoding can draw the mark, but exposes too little control over s
 
 Quality 100 uses the encoder’s highest quality setting. The encoder selects quantization tables for that setting, so compressed bytes, file size and compression ratio can change. The output keeps the original pixel dimensions when EXIF is retained. With EXIF removal enabled, rotations and mirrors are applied to the pixels and a 90° or 270° transform can swap stored width and height. This option removes the EXIF segment and preserves supported color and density information. Some JPEG variants, including CMYK and compound or HDR images carrying unsupported markers, and files above 50 megapixels report an error.
 
-[ImageMagick JPEG options](https://github.com/ImageMagick/Usage-Markdown/blob/main/formats/index.md#writing-jpeg-control-options) · [Encoder](../../src/jpeg.ts) · [Marker checks and restoration](../../src/jpeg-metadata.ts) · [JPEG tests](../../tests/jpeg.test.mjs)
+[ImageMagick JPEG options](https://github.com/ImageMagick/Usage-Markdown/blob/main/formats/index.md#writing-jpeg-control-options) · [Encoder](../../src/jpeg.ts) · [Marker checks and restoration](../../src/jpeg-metadata.ts) · [JPEG tests](../../tests/unit/jpeg.test.mjs)
 
 ## A new watermark layer on each PDF page
 
@@ -54,7 +54,7 @@ Quality 100 uses the encoder’s highest quality setting. The encoder selects qu
 
 The app detects encryption, signed fields, timestamp signatures and document certification and asks for a suitable source copy. A blank signature field is allowed. Source documents with missing CJK font data can render differently in the PDFium preview, which shows a notice and offers the full preview file through the browser. The export retains the source font objects.
 
-[PDF overlay](../../src/pdf.ts) · [PDF structure tests](../../tests/pdf.test.mjs) · [Font detection](../../src/pdf-fonts.ts)
+[PDF overlay](../../src/pdf.ts) · [PDF structure tests](../../tests/unit/pdf.test.mjs) · [Font detection](../../src/pdf-fonts.ts)
 
 ## Preview and input across devices
 
@@ -70,4 +70,4 @@ Language selection reads `navigator.languages` in preference order, including Ch
 
 When the native file and directory pickers are available, the source handle suggests the opening location for the save picker. It remains the user’s choice. The save routine looks for conflicts in the selected folder, advances the default suffix and rejects a conflicting custom name. The standard browser download uses browser settings to choose the destination and handle existing names. Directory collision checks cover this app’s own save flow. The browser API offers no atomic exclusive-create operation against other concurrent writers to that folder.
 
-[Language selection](../../src/i18n.ts) · [File handling](../../src/file-io.ts) · [Naming and directory tests](../../tests/file-io.test.mjs)
+[Language selection](../../src/i18n.ts) · [File handling](../../src/file-io.ts) · [Naming and directory tests](../../tests/unit/file-io.test.mjs)

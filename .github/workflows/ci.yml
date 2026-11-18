@@ -3,25 +3,56 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore: &documentation
+      - '*.md'
+      - 'docs/**'
+      - 'tests/**/*.md'
+      - 'third-party/**/README.md'
+      - 'scripts/capture-screenshots.mjs'
   pull_request:
+    paths-ignore: *documentation
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
-    name: Build and test the offline HTML
+    name: Check the offline app
     runs-on: ubuntu-24.04
-    container:
-      # Official browser and system dependencies, matched to the npm Playwright version.
-      image: mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
-      options: --ipc=host --user pwuser
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: 0
           persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
       - run: npm ci
       - run: npm test
       - run: npm run build:offline -- dist-offline/Watermark.html
-      - run: npm run test:browser
+      - name: Select browser coverage
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          # A PR checks out the merge result. A push can contain several commits.
+          # Without a comparable base (e.g. the first push), run the browser.
+          if git rev-parse --verify --quiet "${BASE_SHA}^{commit}" > /dev/null; then
+            changed=$(git diff --name-only --no-renames "$BASE_SHA" HEAD -- \
+              src public index.html tests/browser tests/fixtures scripts/sample-pdf.mjs \
+              scripts/build-offline.mjs package.json package-lock.json tsconfig.json vite.config.ts \
+              .github/workflows ':(exclude)public/licenses' ':(exclude,glob)tests/**/*.md')
+            if [[ -z "$changed" ]]; then exit 0; fi
+          fi
+          echo 'chromium=true' >> "$GITHUB_OUTPUT"
+      - name: Check JPEG and PDF offline in Chromium
+        if: steps.scope.outputs.chromium == 'true'
+        run: |
+          npx playwright install --only-shell chromium
+          npm run test:browser -- dist-offline/Watermark.html chromium

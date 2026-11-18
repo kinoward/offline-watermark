@@ -12,8 +12,8 @@
     "build": "npm run check && vite build",
     "build:offline": "npm run check && node scripts/build-offline.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "test:browser": "node tests/browser-smoke.mjs",
+    "test": "node --experimental-strip-types --test tests/unit/*.test.mjs",
+    "test:browser": "node tests/browser/smoke.mjs",
     "screenshots": "node scripts/capture-screenshots.mjs"
   },
   "dependencies": {

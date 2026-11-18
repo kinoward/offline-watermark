@@ -10,7 +10,7 @@ import {
   PDFNumber,
   PDFRawStream,
 } from 'pdf-lib';
-import { watermarkPdf } from '../src/pdf.ts';
+import { watermarkPdf } from '../../src/pdf.ts';
 
 const pixels = Buffer.from(
   'iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAAL0lEQVR4nGM0MjKKYkAC586dW8aAB6CrZ2KgEDASUkDIhUxUd4ERiWFCuQsGPBYAtqAR7Vz0i4gAAAAASUVORK5CYII=',

@@ -27,11 +27,12 @@ Watermark 在浏览器里处理文件，刷新会清空任务与设置。在线�
 
 ```sh
 npm ci
-npm test
 npm run build:offline -- dist-offline/Watermark.html
 ```
 
-用浏览器直接打开 `dist-offline/Watermark.html`。[架构与技术选型](docs/zh-CN/architecture.md) · [构建与验证](docs/zh-CN/verification.md)
+用浏览器直接打开 `dist-offline/Watermark.html`。
+
+[应用源码](src/) · [架构与技术选型](docs/zh-CN/architecture.md) · [构建与分发](docs/zh-CN/verification.md) · [测试指南](tests/README.zh-CN.md)
 
 ## 许可证
 

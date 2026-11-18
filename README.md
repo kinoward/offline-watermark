@@ -22,7 +22,7 @@ One HTML file runs offline. Your files stay on your device.</p>
 <p align="center"><em>Original JPEG (left) · Watermarked export (right)</em></p>
 
 <p align="center">
-  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export details</a> · <a href="#build-from-source">Build</a> · <a href="#contributors-and-license">Credits</a>
+  <a href="#quick-start">Quick start</a> · <a href="#export-details">Export details</a> · <a href="#build-from-source">Build</a> · <a href="#contributors">Contributors</a> · <a href="#license">License</a>
 </p>
 
 ## Quick start
@@ -62,8 +62,17 @@ npm run build:offline -- dist-offline/Watermark.html
 
 Open `dist-offline/Watermark.html` directly in your browser. The architecture guide explains how TypeScript, Web Workers, ImageMagick WASM, pdf-lib and PDFium fit into one file. [Source code](src/) · [Architecture](docs/en/architecture.md) · [Build and distribution](docs/en/verification.md) · [Testing](tests/README.md)
 
-## Contributors and license
+<a name="contributors-and-license"></a>
 
-Created by [Kino Ward (@kinoward)](https://github.com/kinoward). [All contributors](https://github.com/kinoward/offline-watermark/graphs/contributors) · [Report an issue](https://github.com/kinoward/offline-watermark/issues)
+## Contributors
+
+<p>
+  <img src="https://github.com/kinoward.png?size=96" width="40" height="40" align="middle" alt="">
+  &nbsp; <strong>Kino Ward</strong> · <a href="https://github.com/kinoward">@kinoward</a> · Creator of Watermark
+</p>
+
+[All contributors](https://github.com/kinoward/offline-watermark/graphs/contributors) · [Report an issue](https://github.com/kinoward/offline-watermark/issues)
+
+## License
 
 Watermark’s original code and documentation use the MIT License. Bundled components retain their own licenses, including LGPL libraries in ImageMagick WASM. Each release includes the corresponding ImageMagick source archive and rebuild instructions. [MIT License](LICENSE) · [Third-party notices](THIRD_PARTY.md) · [Release assets](https://github.com/kinoward/offline-watermark/releases/latest)

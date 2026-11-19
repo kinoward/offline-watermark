@@ -3,8 +3,9 @@ import type { UiMessage } from './messages.ts';
 import { PDFiumLibrary } from '@hyzyla/pdfium';
 import type { PDFiumDocument } from '@hyzyla/pdfium';
 import { pagesWithDeviceCjkFonts } from './pdf-fonts.ts';
+import { unpackWasm } from './offline-gzip.ts';
 
-export type PageRequest = { source?: ArrayBuffer; page: number; longSide: number };
+export type PageRequest = { source?: ArrayBuffer; page: number; longSide: number; wasmGzip?: ArrayBuffer };
 export type PageResult = { pixels: Uint8ClampedArray<ArrayBuffer>; width: number; height: number; count: number; deviceFonts: boolean } | { error: UiMessage };
 
 const worker = self as unknown as {
@@ -17,8 +18,9 @@ let cjkFonts: boolean[] | undefined;
 
 worker.onmessage = async ({ data }) => {
   try {
-    // Vite resolves PDFium's module-relative WASM asset, inlining it in the offline worker.
-    library ??= await PDFiumLibrary.init();
+    library ??= await (import.meta.env.WATERMARK_OFFLINE
+      ? PDFiumLibrary.init({ wasmBinary: await unpackWasm(data.wasmGzip) })
+      : PDFiumLibrary.init());
     if (data.source) {
       pdf?.destroy();
       pdf = undefined;

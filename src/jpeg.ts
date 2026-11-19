@@ -1,25 +1,20 @@
 import { messageError } from './messages.ts';
 import { inspectJpeg, restoreJpegMetadata, type JpegMetadata } from './jpeg-metadata.ts';
 import { createJpegOverlay, type MarkOptions } from './layout.ts';
-import { decodeBase64 } from './base64.ts';
+import { unpackWasm } from './offline-gzip.ts';
 
 type Codec = typeof import('@imagemagick/magick-wasm');
 let codecPromise: Promise<Codec> | undefined;
 
-function loadCodec(): Promise<Codec> {
-  codecPromise ??= Promise.all([
-    import('@imagemagick/magick-wasm'),
-    import('@imagemagick/magick-wasm/magick.wasm?url&no-inline'),
-  ]).then(async ([codec, { default: url }]) => {
-    // The ImageMagick URL loader only accepts HTTP(S); feed it bytes in the offline build.
-    const prefix = 'data:application/wasm;base64,';
-    const source = url.startsWith(prefix)
-      ? decodeBase64(url.slice(prefix.length))
-      : new URL(url, self.location.href);
+function loadCodec(takeWasmGzip: () => ArrayBuffer | undefined): Promise<Codec> {
+  const sourcePromise = import.meta.env.WATERMARK_OFFLINE
+    ? unpackWasm(takeWasmGzip()).then((bytes) => new Uint8Array(bytes))
+    : import('@imagemagick/magick-wasm/magick.wasm?url&no-inline')
+      .then(({ default: url }) => new URL(url, self.location.href));
+  return Promise.all([import('@imagemagick/magick-wasm'), sourcePromise]).then(async ([codec, source]) => {
     await codec.initializeImageMagick(source);
     return codec;
   });
-  return codecPromise;
 }
 
 export function applyJpegOverlay(
@@ -56,14 +51,18 @@ export function applyJpegOverlay(
   return restoreJpegMetadata(encoded, source, clearExif);
 }
 
-export async function watermarkJpeg(input: ArrayBuffer, options: MarkOptions): Promise<ArrayBuffer> {
+export async function watermarkJpeg(
+  input: ArrayBuffer,
+  options: MarkOptions,
+  takeWasmGzip: () => ArrayBuffer | undefined,
+): Promise<ArrayBuffer> {
   const source = inspectJpeg(input);
   if (source.width * source.height > 50_000_000) {
     throw messageError('imageTooLarge');
   }
 
   const [codec, overlay] = await Promise.all([
-    loadCodec(),
+    codecPromise ??= loadCodec(takeWasmGzip),
     createJpegOverlay(source.width, source.height, source.orientation, options),
   ]);
   return applyJpegOverlay(codec, input, overlay, options.quality, source, options.clearExif);

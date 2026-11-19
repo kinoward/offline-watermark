@@ -17,7 +17,7 @@ import type { PickedFile, SourceFileHandle } from './file-io.ts';
 import type { MarkOptions } from './layout.ts';
 import { formatFor, mediaType } from './processing.ts';
 import type { ProcessingJob, ProcessingResult } from './processing.ts';
-import { createProcessorWorker } from './processor-client.ts';
+import { createProcessorWorker, postProcessingJob } from './processor-client.ts';
 import { createPreview } from './preview.ts';
 import { createPreviewMotion } from './preview-motion.ts';
 import type { PreviewItem } from './preview.ts';
@@ -332,18 +332,21 @@ async function process(job: ProcessingJob, previewOnly = false): Promise<ArrayBu
       if ('error' in data) reject(errorFromMessage(data.error));
       else resolve(data.data);
     }
-    function fail() {
+    function discard(error: unknown) {
       cleanup();
       active.terminate();
       if (previewOnly) previewWorker = undefined;
       else worker = undefined;
-      reject(messageError('workerFailed'));
+      reject(error);
+    }
+    function fail() {
+      discard(messageError('workerFailed'));
     }
     active.addEventListener('message', receive);
     active.addEventListener('error', fail);
     active.addEventListener('messageerror', fail);
-    try { active.postMessage(job, [job.bytes]); }
-    catch { fail(); }
+    try { postProcessingJob(active, job); }
+    catch (cause) { discard(errorFromMessage(describeError(cause, 'workerFailed'))); }
   });
 }
 

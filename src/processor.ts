@@ -6,7 +6,17 @@ const worker = self as unknown as {
   postMessage: (message: ProcessingResult, transfer?: Transferable[]) => void;
 };
 
-worker.onmessage = async ({ data: { bytes, kind, options } }) => {
+let jpegWasmGzip: ArrayBuffer | undefined;
+
+function takeJpegWasmGzip() {
+  const compressed = jpegWasmGzip;
+  jpegWasmGzip = undefined;
+  return compressed;
+}
+
+worker.onmessage = async ({ data: { bytes, kind, options, wasmGzip } }) => {
+  // A failed input can leave the JPEG codec unused until the next request.
+  jpegWasmGzip ??= wasmGzip;
   try {
     const header = new Uint8Array(bytes, 0, Math.min(1024, bytes.byteLength));
     if (kind === 'jpeg' && (header[0] !== 0xff || header[1] !== 0xd8 || header[2] !== 0xff)) {
@@ -16,7 +26,7 @@ worker.onmessage = async ({ data: { bytes, kind, options } }) => {
       throw messageError('pdfMagic');
     }
     const data = kind === 'jpeg'
-      ? await (await import('./jpeg.ts')).watermarkJpeg(bytes, options)
+      ? await (await import('./jpeg.ts')).watermarkJpeg(bytes, options, takeJpegWasmGzip)
       : await (await import('./pdf.ts')).watermarkPdf(bytes, options);
     worker.postMessage({ data }, [data]);
   } catch (error) {

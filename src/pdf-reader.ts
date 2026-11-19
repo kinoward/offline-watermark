@@ -1,4 +1,4 @@
-import { createPdfPageWorker } from './processor-client.ts';
+import { createPdfPageWorker, postPdfPageRequest } from './processor-client.ts';
 import type { PageRequest, PageResult } from './pdf-page-worker.ts';
 import { describeError, t } from './i18n.ts';
 import type { UiMessage } from './messages.ts';
@@ -83,7 +83,7 @@ export function createPdfReader(onChange: () => void, tabletLayout: MediaQueryLi
         worker!.onmessage = (event: MessageEvent<PageResult>) => resolve(event.data);
         worker!.onerror = () => reject({ key: 'readerFailed' } satisfies UiMessage);
         const request: PageRequest = { source: bytes, page: currentPage, longSide };
-        worker!.postMessage(request, bytes ? [bytes] : []);
+        postPdfPageRequest(worker!, request);
       });
       if (session !== generation) return;
       if ('error' in reply) throw reply.error;

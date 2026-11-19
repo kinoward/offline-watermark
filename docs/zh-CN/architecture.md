@@ -26,7 +26,7 @@ flowchart LR
 
 ## 让构建结果可以通过 `file://` 打开
 
-[Vite](https://vite.dev/) 构建 HTML、CSS 和 TypeScript。离线构建将页面内联，并生成两段含 WebAssembly 字节的 Worker 代码，分别用 gzip 压缩、Base64 编码。运行时用 `DecompressionStream` 解包所需 Worker，通过 Blob URL 加载。Worker 入口作为经典脚本执行，以兼容 WebKit 对 `file://` 下模块 Blob Worker 的限制。若构建后仍依赖其他资源文件，离线构建会报错。
+[Vite](https://vite.dev/) 构建 HTML、CSS 和 TypeScript。离线构建将页面内联，对两段 Worker 脚本和两份原始 WASM 二进制分别执行 gzip 压缩和 Base64 编码，再嵌入 HTML。运行时通过 `DecompressionStream` 按需解包脚本，由页面通过 Blob URL 启动经典 Worker，兼容 WebKit 的 `file://` 场景。首次使用某个编解码器时，页面将对应的压缩 WASM 转移给 Worker，直接用解压后的字节初始化。构建过程会检查产物是否依赖其他文件。
 
 首次处理 JPEG 时初始化它的 WASM 编解码器。PDF 导出与页面预览独立运行，用画布预览时才加载 PDFium。WebKit 在 `file://` 下可以从 Worker 画布生成 PNG Blob，读取时有时会报 `NotReadableError`。遇到该错误时，将同一份 RGBA 像素交给 UPNG 编码。水印文字使用浏览器本机字体，以控制下载体积。
 

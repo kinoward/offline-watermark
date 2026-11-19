@@ -26,7 +26,7 @@ flowchart LR
 
 ## Package the app for `file://`
 
-[Vite](https://vite.dev/) builds the HTML, CSS and TypeScript. The offline builder makes an inline page bundle and two worker payloads. Each Worker payload contains its WebAssembly bytes and is gzip-compressed and Base64-encoded. At runtime `DecompressionStream` unpacks the requested worker into a Blob URL. The worker entry runs as a classic script, which addresses a `file://` restriction on module Blob workers in WebKit. Assembly checks fail the build if a chunk or asset would require another file.
+[Vite](https://vite.dev/) builds the HTML, CSS and TypeScript. The offline build inlines the page bundle. It gzip-compresses the two Worker scripts and two original WASM binaries separately and embeds each as Base64. At runtime `DecompressionStream` unpacks each Worker script on demand and the page starts it as a classic Blob Worker, which supports `file://` in WebKit. On the first job that uses each codec, the page transfers the compressed WASM to its Worker, where the codec initializes directly from the decompressed bytes. The build checks that the result needs no additional files.
 
 JPEG’s WASM decoder/encoder initializes on its first use. PDF export and raster preview are separate jobs. PDFium loads when the canvas page reader is used. WebKit can create a PNG Blob in a `file://` worker and then fail with `NotReadableError` when reading it. In that situation the tile code gives the same RGBA pixels to UPNG instead. Embedded fonts would increase the download size, so the app uses local browser fonts for watermark text.
 

@@ -52,7 +52,7 @@
 
 - **怎样给 PDF 每一页加水印，同时保留可搜索文字？** pdf-lib 在每页叠加透明图块，按页面旋转角度调整坐标，并把水印裁切在可见区域内。原有正文仍可选中，原始图片流也会保留。[PDF 叠加实现](src/pdf.ts#L109) · [从导出文件中提取正文的测试](tests/browser/smoke.mjs#L166)
 - **怎样清除 JPEG 的 EXIF，又保持照片显示方向？** ImageMagick WebAssembly 先按原有方向标记旋转或翻转像素，再清除 EXIF 并重新编码。测试核对导出照片的方向、ICC 色彩配置、色度采样和渐进编码。[JPEG 编码实现](src/jpeg.ts#L25) · [EXIF 与方向测试](tests/unit/jpeg.test.mjs#L37)
-- **怎样把 Web Worker 和 WebAssembly 打进一个可双击运行的 HTML？** 构建时，将包含 WASM 字节的 Worker 压缩并嵌入 HTML。使用时，浏览器按需解压，通过 Blob URL 启动 Worker。浏览器测试从本地打开 HTML，阻断 HTTP 和 HTTPS 请求后执行导出。[离线打包脚本](scripts/build-offline.mjs) · [Worker 加载器](src/processor-client-offline.ts#L4) · [断网测试](tests/browser/smoke.mjs#L24)
+- **怎样把 Web Worker 和 WebAssembly 打进一个可双击运行的 HTML？** 构建时，分别压缩 Worker 脚本和 WASM 二进制，再嵌入 HTML。浏览器通过 Blob URL 启动 Worker，并在首次用到对应库时解压 WASM。浏览器测试从本地打开 HTML，阻断网络请求后执行导出。[离线打包脚本](scripts/build-offline.mjs) · [Worker 加载器](src/processor-client-offline.ts) · [断网测试](tests/browser/smoke.mjs#L24)
 - **怎样让预览和导出的水印排列一致？** 两者共用图块尺寸、旋转角度和行列坐标，相邻行横向错开半格。大小控制字号，密度控制图块间距。[共用排版实现](src/layout.ts#L59) · [大小与间距测试](tests/unit/pdf.test.mjs#L130)
 
 ### 导出细节

@@ -97,14 +97,20 @@ check_assets() {
 }
 
 publish_release() {
-  local release id draft prerelease rows
+  local release id draft prerelease rows attempt
   ensure_current
   check_bundle "$bundle"
   release=$(find_release)
   if [[ -z $release ]]; then
     gh release create "$tag" --repo "$repo" --verify-tag --draft --latest=false \
       --title "Watermark $tag" --notes-file "docs/releases/$tag.md"
-    release=$(find_release)
+    # GitHub can create the draft before it appears in the release list.
+    for ((attempt = 1; attempt <= 10; attempt++)); do
+      release=$(find_release)
+      [[ -z $release ]] || break
+      if (( attempt < 10 )); then sleep 2; fi
+    done
+    [[ -n $release ]] || fail "The draft for $tag did not become visible in the release API"
   fi
   read -r id draft prerelease <<< "$release"
   [[ $id =~ ^[0-9]+$ && $prerelease == false ]] ||

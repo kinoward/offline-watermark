@@ -19,4 +19,6 @@ npm run build:offline -- dist-offline/Watermark.html
 
 ## 核对公开版本
 
-为 `main` 上的提交推送 `v*` 版本标签会启动发行流程。工作流核对包版本，构建并测试 HTML，再打包对应的 ImageMagick 源码。GitHub Releases 提供已通过测试的 `Watermark.html`，Pages 将同一份文件以 `index.html` 发布。Pages 部署环境允许发行标签部署。[发行工作流](../../.github/workflows/release.yml) · [ImageMagick 源码与重建](../../third-party/imagemagick/README.md) · [校验公开下载](../../tests/README.zh-CN.md#校验公开下载)
+等 CI 通过后，为 `main` 上的提交推送带注释的 `vX.Y.Z` 标签。标签、npm 版本和双语发行说明须一致。工作流只构建一份 HTML，从磁盘和本地 HTTP 运行浏览器检查，然后发布带版本号的 Release、对应的 ImageMagick 源码包和校验和。Pages 部署同一份 HTML，公开文件核对通过后，Release 才标为 Latest。[发行工作流](../../.github/workflows/release.yml) · [校验公开下载](../../tests/README.zh-CN.md#校验公开下载)
+
+使用 **Re-run failed jobs** 可从失败处继续，构建产物保留七天。已经公开的版本及验证过的附件会被复用。如果产物已过期而带版本号的 Release 已公开，重跑整个工作流会取回该 Release 的文件，核验后再部署。[ImageMagick 源码与重建](../../third-party/imagemagick/README.md)

@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash
+
 concurrency:
   group: public-release
   cancel-in-progress: false
@@ -20,6 +24,13 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
       options: --ipc=host --user pwuser
     timeout-minutes: 25
+    outputs:
+      release_artifact: ${{ steps.prepare.outputs.release_artifact }}
+      pages_artifact: ${{ steps.prepare.outputs.pages_artifact }}
+      html_sha256: ${{ steps.prepare.outputs.html_sha256 }}
+      manifest_sha256: ${{ steps.prepare.outputs.manifest_sha256 }}
+      html_bytes: ${{ steps.prepare.outputs.html_bytes }}
+      commit: ${{ steps.prepare.outputs.commit }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -27,33 +38,73 @@ jobs:
           persist-credentials: false
       - name: Verify version and source
         run: |
-          test "$GITHUB_REF_NAME" = "v$(node -p 'require("./package.json").version')"
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync } from 'node:fs';
+          const tag = process.env.GITHUB_REF_NAME;
+          const read = path => JSON.parse(readFileSync(path, 'utf8'));
+          const { version } = read('package.json');
+          const lock = read('package-lock.json');
+          assert.match(tag, /^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$/);
+          assert.equal(tag.slice(1), version);
+          assert.equal(lock.version, version);
+          assert.equal(lock.packages[''].version, version);
+          NODE
+          tag_ref="refs/tags/$GITHUB_REF_NAME"
+          test "$(git cat-file -t "$tag_ref")" = tag
+          test "$(git rev-parse "$tag_ref^{commit}")" = "$(git rev-parse HEAD)"
           git merge-base --is-ancestor HEAD origin/main
           test -s "docs/releases/$GITHUB_REF_NAME.md"
       - run: npm ci
       - run: npm test
-      - run: npm run build:offline -- dist-offline/Watermark.html
+      - name: Restore the public bundle when rebuilding an earlier release run
+        id: restore
+        run: bash scripts/release.sh restore
+      - name: Build the single HTML
+        if: steps.restore.outputs.restored != 'true'
+        run: npm run build:offline -- dist-offline/Watermark.html
+      - name: Check types for the restored bundle
+        if: steps.restore.outputs.restored == 'true'
+        run: npm run check
       - run: npm run test:browser
-      - name: Prepare the download and Pages artifact
+      - run: node tests/browser/hosted.mjs
+      - name: Package the corresponding ImageMagick source
+        if: steps.restore.outputs.restored != 'true'
         run: |
           node scripts/pack-imagemagick-source.mjs dist-offline/ImageMagick-WASM-source.tar.gz
+          cd dist-offline
+          sha256sum Watermark.html ImageMagick-WASM-source.tar.gz > SHA256SUMS
+      - name: Prepare the download and Pages artifact
+        id: prepare
+        run: |
           mkdir -p dist-offline/pages
           cp dist-offline/Watermark.html dist-offline/pages/index.html
           cmp dist-offline/Watermark.html dist-offline/pages/index.html
+          commit=$(git rev-parse HEAD)
           cd dist-offline
-          sha256sum Watermark.html ImageMagick-WASM-source.tar.gz > SHA256SUMS
+          {
+            printf 'release_artifact=release-files-%s\n' "$GITHUB_RUN_ATTEMPT"
+            printf 'pages_artifact=github-pages-%s\n' "$GITHUB_RUN_ATTEMPT"
+            printf 'html_sha256=%s\n' "$(sha256sum Watermark.html | cut -d ' ' -f 1)"
+            printf 'manifest_sha256=%s\n' "$(sha256sum SHA256SUMS | cut -d ' ' -f 1)"
+            printf 'html_bytes=%s\n' "$(wc -c < Watermark.html | tr -d '[:space:]')"
+            printf 'commit=%s\n' "$commit"
+          } >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: release-files
+          name: ${{ steps.prepare.outputs.release_artifact }}
           compression-level: 0
           if-no-files-found: error
+          retention-days: 7
           path: |
             dist-offline/Watermark.html
             dist-offline/ImageMagick-WASM-source.tar.gz
             dist-offline/SHA256SUMS
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
+          name: ${{ steps.prepare.outputs.pages_artifact }}
           path: dist-offline/pages
+          retention-days: 7
 
   publish:
     name: Publish the GitHub Release
@@ -67,27 +118,71 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: release-files
+          name: ${{ needs.build.outputs.release_artifact }}
           path: dist-offline
-      - name: Attach the offline app, checksums and source archive
+      - name: Publish the versioned release after verifying every asset
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "$GITHUB_REF_NAME" --verify-tag \
-            --title "Watermark $GITHUB_REF_NAME" --latest \
-            --notes-file "docs/releases/$GITHUB_REF_NAME.md" \
-            dist-offline/Watermark.html dist-offline/SHA256SUMS dist-offline/ImageMagick-WASM-source.tar.gz
+        run: bash scripts/release.sh publish
 
   deploy:
     name: Deploy to GitHub Pages
-    needs: publish
+    needs: [build, publish]
     runs-on: ubuntu-24.04
     permissions:
+      contents: read
       pages: write
       id-token: write
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check for a newer public version before deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/release.sh guard
       - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
         id: deployment
+        with:
+          artifact_name: ${{ needs.build.outputs.pages_artifact }}
+
+  verify:
+    name: Verify the public downloads and Pages
+    needs: [build, deploy]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Compare public files with the verified build
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_HTML_SHA256: ${{ needs.build.outputs.html_sha256 }}
+          EXPECTED_MANIFEST_SHA256: ${{ needs.build.outputs.manifest_sha256 }}
+        run: bash scripts/release.sh verify
+
+  promote:
+    name: Mark the verified release as Latest
+    needs: [build, deploy, verify]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Update Latest and verify its public download
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_HTML_SHA256: ${{ needs.build.outputs.html_sha256 }}
+          HTML_BYTES: ${{ needs.build.outputs.html_bytes }}
+          RELEASE_COMMIT: ${{ needs.build.outputs.commit }}
+        run: bash scripts/release.sh promote

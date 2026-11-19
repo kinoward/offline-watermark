@@ -206,6 +206,10 @@ async function counter(page, text) {
 }
 
 async function pdfFlow(page) {
+  const jpegWasm = await id(page, 'imagemagick-wasm-data').evaluateHandle((node) => {
+    node.remove();
+    return node;
+  });
   await chooseFile(page, 'field-study.pdf', 'application/pdf', originalPdf);
   const canvas = id(page, 'pdf-page-canvas');
   await canvas.waitFor();
@@ -257,6 +261,25 @@ async function pdfFlow(page) {
       document.getElementById('preview-message').textContent === text, message
     );
   }
+
+  await chooseFile(page, 'replacement.pdf', 'application/pdf', originalPdf);
+  await canvas.waitFor();
+  await counter(page, '1 / 3');
+
+  // Use the same export worker for PDF and then JPEG. Its JPEG WASM must
+  // remain available after a failed first JPEG job.
+  await jpegWasm.evaluate((node) => document.body.append(node));
+  await jpegWasm.dispose();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await chooseFile(page, 'invalid.jpg', 'image/jpeg', Buffer.from('invalid JPG'));
+  await id(page, 'generate').click();
+  await page.waitForFunction(() =>
+    document.getElementById('notice-text').textContent ===
+      'The file contents don’t match JPEG. Check for damage or a changed extension.'
+  );
+  await chooseFile(page, 'replacement.jpg', 'image/jpeg', originalJpeg);
+  const jpeg = await exportFile(page, 'replacement_水印版_01.jpg');
+  checkJpeg(jpeg, false);
 }
 
 try {

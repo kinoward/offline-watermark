@@ -100,14 +100,11 @@ Open `dist-offline/Watermark.html` directly in your browser. [Source code](src/)
 
 <p align="center">
   <a href="https://www.star-history.com/?repos=kinoward%2Foffline-watermark&amp;type=date">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left&amp;theme=dark">
-      <img src="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left" width="680" alt="GitHub stars for Watermark over time">
-    </picture>
+    <img src="docs/assets/star-history.svg" width="680" alt="Cumulative GitHub stars received by Watermark, by date">
   </a>
 </p>
 
-The badge at the top shows the current count. A trend line appears once the project has received stars on different dates. [Explore the interactive chart](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+The chart shows cumulative stars received by date. The badge at the top shows the current count. [Explore the interactive chart](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
 
 ## License
 

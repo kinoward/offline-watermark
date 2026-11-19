@@ -100,14 +100,11 @@ npm run build:offline -- dist-offline/Watermark.html
 
 <p align="center">
   <a href="https://www.star-history.com/?repos=kinoward%2Foffline-watermark&amp;type=date">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left&amp;theme=dark">
-      <img src="https://api.star-history.com/chart?repos=kinoward/offline-watermark&amp;type=date&amp;legend=top-left" width="680" alt="Watermark 在 GitHub 上的 Star 数量随时间的变化">
-    </picture>
+    <img src="docs/assets/star-history.svg" width="680" alt="Watermark 按日期累计收到的 GitHub Star 数量">
   </a>
 </p>
 
-页首徽章显示当前的 Star 数量。仓库在不同日期收到 Star 后，图中就会出现趋势线。[查看交互图表](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
+图中按日期显示累计收到的 Star 数量。页首徽章显示当前的 Star 数量。[查看交互图表](https://www.star-history.com/?repos=kinoward%2Foffline-watermark&type=date)
 
 ## 开源许可
 

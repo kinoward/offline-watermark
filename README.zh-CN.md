@@ -1,7 +1,13 @@
-<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
+<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark｜离线 PDF 和 JPG 图片水印工具</h1>
 
-<p align="center"><strong>分享护照扫描件或在读证明前，把接收方和用途标在副本上。</strong><br>
-在浏览器本地为 JPEG 图片或 PDF 的每一页添加平铺文字水印。下载一个 HTML 文件，断网也能用。</p>
+<p align="center"><strong>在浏览器本地给 JPG／JPEG 图片或 PDF 的每一页添加平铺文字水印，文件无需上传。</strong><br>
+可以直接在线打开，也可以下载单个 HTML 文件，断网使用。</p>
+
+<p align="center">
+  <strong><a href="https://kinoward.github.io/offline-watermark/">在线打开工具</a></strong> ·
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a> ·
+  <a href="#实现方法">查看实现方法</a>
+</p>
 
 <p align="center"><a href="README.md" lang="en">English</a> · <strong>简体中文</strong></p>
 
@@ -20,23 +26,19 @@
   <a href="#隐私与语言"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-8-106F78?style=flat&amp;labelColor=293747" height="22" alt="八种界面语言"></a>
 </p>
 
-<p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-zh-CN.svg" width="157" height="40" alt="在线打开工具 Watermark"></a><br>
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">下载离线 HTML</a> ·
-  <a href="#工作原理">工作原理</a>
-</p>
+## 快速上手
+
+打开工具即可用内置样张试调水印。要亲自导出下图中的副本，可以先保存这张由 AI 生成的示例图片，再用编辑器打开。[保存示例图片（JPEG）](docs/assets/passport-cn-sample.jpg?raw=true)
+
+1. **添加文件。** 选择一份 JPG、JPEG 或 PDF。离线使用时，先双击下载好的 `Watermark.html`。
+2. **填写水印文字。** 要复现下图，第一行填 `海湾酒店`，第二行填 `仅供预订核验`。边看预览边调整大小、密度和透明度。
+3. **生成水印 → 下载文件。** 可以保留默认名称，例如 `passport-cn-sample_水印版_01.jpg`，也可以自行命名。支持目录访问的浏览器还可选择 **保存到文件夹**。
 
 [![打开 Watermark。编辑器中的中国护照信息页样本上，平铺着「海湾酒店」和「仅供预订核验」两行水印。](docs/assets/watermark-workbench-zh-CN.jpg)](https://kinoward.github.io/offline-watermark/)
 
 <p align="center"><em>向酒店提供护照副本时，用水印写明酒店名称，注明仅供本次预订核验。</em> · <a href="docs/assets/watermark-comparison-zh-CN.jpg">对比原图与加水印的副本</a></p>
 
-## 快速上手
-
-打开工具即可在内置样张上试调水印。想复现上图，可以使用这张由 AI 生成的中国护照信息页样本。[保存示例图片（JPEG）](docs/assets/passport-cn-sample.jpg)
-
-1. **添加文件。** 打开工具，选择一份 JPG、JPEG 或 PDF。需要离线使用时，双击已下载的 `Watermark.html` 就能打开同一个编辑器。
-2. **填写水印文字。** 第一行填 `海湾酒店`，第二行填 `仅供预订核验`。处理自己的材料时，换成实际接收方和用途，再边看预览边调整大小、密度和透明度。
-3. **生成水印 → 下载文件。** 可以修改副本名称，也可以保留默认名称，例如 `passport-cn-sample_水印版_01.jpg`。支持目录访问的浏览器还可选择 **保存到文件夹**。
+如果你想下次继续用这个离线工具，或回来查 PDF 和 JPEG 的处理代码，可以给仓库点个 Star 收藏。
 
 ### 在不同设备上使用
 
@@ -44,9 +46,14 @@
 - **平板**上可边翻阅 PDF 边调整水印。[平板截图](docs/assets/tablet-zh-CN.jpg)
 - **手机**上轻点缩略图即可放大预览。[手机截图](docs/assets/phone-zh-CN.jpg)
 
-## 工作原理
+<a name="工作原理"></a>
 
-**一个 HTML 文件就包含编辑器和文件处理引擎。** 浏览器按需解包，用后台线程（Web Worker）执行导出，界面仍可操作。预览和导出共用一套排版规则，每隔一行将文字横向错开半格，形成砖形水印。
+## 实现方法
+
+- **怎样给 PDF 每一页加水印，同时保留可搜索文字？** pdf-lib 在每页叠加透明图块，按页面旋转角度调整坐标，并把水印裁切在可见区域内。原有正文仍可选中，原始图片流也会保留。[PDF 叠加实现](src/pdf.ts#L109) · [从导出文件中提取正文的测试](tests/browser/smoke.mjs#L166)
+- **怎样清除 JPEG 的 EXIF，又保持照片显示方向？** ImageMagick WebAssembly 先按原有方向标记旋转或翻转像素，再清除 EXIF 并重新编码。测试核对导出照片的方向、ICC 色彩配置、色度采样和渐进编码。[JPEG 编码实现](src/jpeg.ts#L25) · [EXIF 与方向测试](tests/unit/jpeg.test.mjs#L37)
+- **怎样把 Web Worker 和 WebAssembly 打进一个可双击运行的 HTML？** 构建时，将包含 WASM 字节的 Worker 压缩并嵌入 HTML。使用时，浏览器按需解压，通过 Blob URL 启动 Worker。浏览器测试从本地打开 HTML，阻断 HTTP 和 HTTPS 请求后执行导出。[离线打包脚本](scripts/build-offline.mjs) · [Worker 加载器](src/processor-client-offline.ts#L4) · [断网测试](tests/browser/smoke.mjs#L24)
+- **怎样让预览和导出的水印排列一致？** 两者共用图块尺寸、旋转角度和行列坐标，相邻行横向错开半格。大小控制字号，密度控制图块间距。[共用排版实现](src/layout.ts#L59) · [大小与间距测试](tests/unit/pdf.test.mjs#L130)
 
 ### 导出细节
 
@@ -55,13 +62,15 @@
 | **JPEG** | ImageMagick 通过 WebAssembly 在原图分辨率下合成水印，再按所选质量重新编码。 | 工具会核对像素尺寸、色彩配置、分辨率、色度采样和基线或渐进编码模式。即使质量为 100，文件大小也可能变化。 |
 | **PDF** | pdf-lib 在每一页追加透明水印图块，由浏览器或 PDFium 渲染预览。 | 保留纸张大小、旋转角度和原始图片流。原本可搜索、可选中的正文仍然可用。 |
 
-启用 **清除 EXIF 信息** 时，工具先按方向标记旋转或翻转照片，再清除 EXIF。处理加密或带数字签名的 PDF 时，请打开已解密、未签名的副本。
+**格式限制。** 一次处理一份 JPG、JPEG 或 PDF，JPEG 上限为 5,000 万像素。纯图片 PDF 需要另行 OCR 才能获得可搜索的文字层。处理加密或带数字签名的 PDF 时，请使用已解密、未签名的副本。
 
 [架构与技术选型](docs/zh-CN/architecture.md) · [从源码构建](#从源码构建) · [验证与测试](tests/README.zh-CN.md)
 
 ### 隐私与语言
 
 文件和设置只保存在页面内存里，刷新即清空。在线版由 GitHub Pages 提供，GitHub 会记录访客 IP。如需全程断网使用，先下载 HTML，再从本地打开即可。[GitHub Pages 数据收集说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
+
+在线编辑器和离线下载提供的是同一个 HTML 文件，都可以用发行版的校验和验证。[校验公开下载](tests/README.zh-CN.md#校验公开下载)
 
 界面会根据浏览器语言偏好自动选择，也可手动切换简体中文、繁體中文、English、日本語、한국어、Español、Français 和 Русский。
 

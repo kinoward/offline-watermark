@@ -1,9 +1,15 @@
-<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Watermark</h1>
+<h1 align="center"><img src="docs/assets/watermark.svg" width="32" height="32" alt=""> Offline Watermark Tool for PDFs and JPEGs</h1>
 
-<p align="center"><strong>Mark a passport scan or proof of enrollment with the recipient and purpose before sharing.</strong><br>
-Watermark JPEGs and PDFs on your device. Download one HTML file to work offline.</p>
+<p align="center"><strong>Add tiled text watermarks to JPEG images or every page of a PDF in your browser.</strong><br>
+Your files stay on your device. Open the editor online, or download one HTML file and use it offline.</p>
 
-<p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
+<p align="center">
+  <strong><a href="https://kinoward.github.io/offline-watermark/">Open the editor</a></strong> ·
+  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download offline HTML</a> ·
+  <a href="#implementation-guide">Explore the implementation</a>
+</p>
+
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md" lang="zh-CN">简体中文指南 · 在浏览器本地给 PDF 和 JPG 图片加水印，支持离线使用</a></p>
 
 <p align="center">
   <a href="#contributors"><img src="https://img.shields.io/badge/Author-Kino%20Ward-6B50A1?style=flat&amp;labelColor=293747&amp;logo=github&amp;logoColor=white" height="22" alt="Author: Kino Ward"></a>
@@ -20,23 +26,19 @@ Watermark JPEGs and PDFs on your device. Download one HTML file to work offline.
   <a href="#privacy-and-languages"><img src="https://img.shields.io/badge/Languages-8-106F78?style=flat&amp;labelColor=293747" height="22" alt="Eight interface languages"></a>
 </p>
 
-<p align="center">
-  <a href="https://kinoward.github.io/offline-watermark/"><img src="docs/assets/open-app-en.svg" width="194" height="40" alt="Open Watermark"></a><br>
-  <a href="https://github.com/kinoward/offline-watermark/releases/latest/download/Watermark.html">Download offline HTML</a> ·
-  <a href="#how-it-works">How it works</a>
-</p>
+## Quick start
+
+Try the controls on the built-in preview. To export the example below yourself, save the AI-generated sample JPEG and open it in the editor. [Save the sample JPEG](docs/assets/passport-us-sample.jpg?raw=true)
+
+1. **Add file.** Choose one JPG, JPEG or PDF. To work offline, double-click the downloaded `Watermark.html` first.
+2. **Set the text.** For the example, enter `Harbor Hotel` on the first line and `Booking verification only` on the second. Adjust size, density and opacity in the preview.
+3. **Apply watermark → Download.** Keep the suggested name, such as `passport-us-sample_水印版_01.jpg`, or choose your own. Browsers with directory access also offer **Save to folder**.
 
 [![Open Watermark. A U.S. passport specimen in the editor carries the repeating text “Harbor Hotel” and “Booking verification only”.](docs/assets/watermark-workbench-en.jpg)](https://kinoward.github.io/offline-watermark/)
 
 <p align="center"><em>A traveler marks a passport copy for a single hotel booking.</em> · <a href="docs/assets/watermark-comparison-en.jpg">Compare the original and the export</a></p>
 
-## Quick start
-
-Try the controls on the built-in preview, or follow along with the AI-generated U.S. passport specimen shown above. [Save the sample JPEG](docs/assets/passport-us-sample.jpg)
-
-1. **Add file.** Open Watermark and choose one JPG, JPEG or PDF. For offline use, double-click the downloaded `Watermark.html` to open the same editor.
-2. **Set the text.** Enter `Harbor Hotel` on the first line and `Booking verification only` on the second. For your own document, use the actual recipient and purpose. Adjust size, density and opacity in the preview.
-3. **Apply watermark → Download.** Choose a name for the copy or keep the suggested one, such as `passport-us-sample_水印版_01.jpg`. Browsers with directory access also offer **Save to folder**.
+Star this repository if you’d like to find the offline editor or its PDF and JPEG code again.
 
 ### Using the editor on different devices
 
@@ -44,9 +46,14 @@ Try the controls on the built-in preview, or follow along with the AI-generated 
 - **Tablet.** Turn PDF pages with the watermark settings in view. [Tablet screenshot](docs/assets/tablet-en.jpg)
 - **Phone.** Tap the compact preview to enlarge it. [Phone screenshot](docs/assets/phone-en.jpg)
 
-## How it works
+<a name="how-it-works"></a>
 
-**One HTML file contains the editor and its processing engines.** The browser unpacks them as needed. A Web Worker handles the export while you use the interface. Preview and export share the same layout rules. Every other row shifts by half a tile to create the brick pattern.
+## Implementation guide
+
+- **How do I watermark every PDF page and keep the text searchable?** pdf-lib adds a transparent image tile to each page. The overlay follows the page rotation and clips to the visible area. Existing text stays selectable and the original image streams are preserved. [PDF overlay](src/pdf.ts#L109) · [Test that extracts text from the export](tests/browser/smoke.mjs#L166)
+- **How do I remove JPEG EXIF data and keep the photo upright?** ImageMagick WebAssembly applies the stored rotation or flip to the pixels before removing EXIF and re-encoding. The tests check the result’s orientation, ICC profile, chroma sampling and progressive encoding. [JPEG encoder](src/jpeg.ts#L25) · [EXIF and orientation test](tests/unit/jpeg.test.mjs#L37)
+- **How can Web Workers and WebAssembly run offline from one HTML file?** The build embeds compressed workers with their WASM bytes. When needed, the browser decompresses a worker and starts it from a Blob URL. The browser test opens the HTML from disk and exports with HTTP and HTTPS requests blocked. [Offline builder](scripts/build-offline.mjs) · [Worker loader](src/processor-client-offline.ts#L4) · [Offline test](tests/browser/smoke.mjs#L24)
+- **How can the preview and export use the same tiled layout?** Both use the same tile dimensions, rotation and row positions. Every other row shifts by half a step. Size scales the lettering and density changes the spacing. [Shared layout](src/layout.ts#L59) · [Size and spacing test](tests/unit/pdf.test.mjs#L130)
 
 ### Export details
 
@@ -55,13 +62,15 @@ Try the controls on the built-in preview, or follow along with the AI-generated 
 | **JPEG** | ImageMagick runs in WebAssembly, draws the watermark at the photo’s resolution and re-encodes it at the selected quality. | Watermark checks dimensions, color profile, resolution, chroma sampling and baseline or progressive encoding. File size can change even at quality 100. |
 | **PDF** | pdf-lib adds the transparent tile to each page. The browser or PDFium renders the preview. | Page sizes, rotations, original image streams and existing searchable text are preserved. |
 
-**Remove EXIF data** applies a JPEG’s stored orientation to its pixels before stripping EXIF. For an encrypted or digitally signed PDF, open a decrypted, unsigned copy.
+**Format limits.** Open one JPG, JPEG or PDF at a time. JPEG input is limited to 50 megapixels. An image-only PDF needs separate OCR to gain searchable text. For an encrypted or digitally signed PDF, use a decrypted, unsigned copy.
 
 [Architecture and design decisions](docs/en/architecture.md) · [Build from source](#build-from-source) · [Verification and tests](tests/README.md)
 
 ### Privacy and languages
 
 Files and settings stay in page memory. Refreshing clears the session. Opening the hosted app loads it from GitHub Pages, which logs visitor IP addresses. For a fully offline session, download the HTML first and then open it from disk. [GitHub Pages privacy information](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
+
+The hosted editor and the offline download are the same HTML file. You can verify both against the release checksum. [Verify a published download](tests/README.md#verify-a-published-download)
 
 The interface starts in your browser’s preferred supported language. You can switch between English, 简体中文, 繁體中文, 日本語, 한국어, Español, Français and Русский.
 

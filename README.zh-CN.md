@@ -74,6 +74,19 @@
 
 界面会根据浏览器语言偏好自动选择，也可手动切换简体中文、繁體中文、English、日本語、한국어、Español、Français 和 Русский。
 
+## 技术沉淀
+
+- [单 HTML 打包与 WASM 按需加载](docs/zh-CN/technical-notes/single-html-wasm/README.md)。分别压缩 Worker 与 WASM，按功能解包，记录发布文件的体积变化。
+- [单文件的离线与托管验证](docs/zh-CN/technical-notes/offline-browser-verification/README.md)。用同一份 HTML 测试本地和 HTTP 入口，拦截意外网络请求并验证实际导出。
+- [JPEG 重编码与元数据保真](docs/zh-CN/technical-notes/jpeg-reencoding/README.md)。重编码时核对方向、采样和元数据，并处理源图缩略图。
+- [PDF 逐页叠加与内容保真](docs/zh-CN/technical-notes/pdf-overlay/README.md)。按可见区域追加水印，并核对原始压缩流和可搜索正文。
+- [跨格式的平铺水印排版](docs/zh-CN/technical-notes/shared-watermark-layout/README.md)。在预览、JPEG 和 PDF 中复用图块尺寸和位置计算。
+- [异步预览与响应式编辑](docs/zh-CN/technical-notes/async-preview/README.md)。调度异步绘制，避免旧结果覆盖，并在布局变化时延续编辑状态。
+- [本地文件保存与重名处理](docs/zh-CN/technical-notes/local-file-saving/README.md)。在授权目录中保留扩展名、处理重名并限定失败清理范围。
+- [浏览器语言匹配与 Worker 消息翻译](docs/zh-CN/technical-notes/worker-localization/README.md)。按语言偏好选择字典，在接收端翻译 Worker 发来的消息。
+- [ImageMagick WASM 的源码对应与重建](docs/zh-CN/technical-notes/imagemagick-wasm-rebuild/README.md)。用固定提交的源码归档重建原生模块和 JavaScript 包装器。
+- [单产物发版与公开字节校验](docs/zh-CN/technical-notes/verified-release/README.md)。让 Release 和 Pages 使用同一份构建，并在更新 Latest 前校验公开文件。
+
 ## 从源码构建
 
 使用 Vite 支持的 Node.js 发行线，最低版本为 **22.18**。在仓库根目录运行以下命令。

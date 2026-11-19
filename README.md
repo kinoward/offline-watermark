@@ -74,6 +74,19 @@ The hosted editor and the offline download are the same HTML file. You can verif
 
 The interface starts in your browser’s preferred supported language. You can switch between English, 简体中文, 繁體中文, 日本語, 한국어, Español, Français and Русский.
 
+## Engineering notes
+
+- [Packaging one HTML file and loading WASM on demand](docs/en/technical-notes/single-html-wasm/README.md). Compress workers and WASM separately, unpack them by feature, and compare the published file sizes.
+- [Verifying one HTML file from disk and over HTTP](docs/en/technical-notes/offline-browser-verification/README.md). Test both entry points with the same HTML, intercept unexpected network requests and verify real exports.
+- [JPEG re-encoding and metadata fidelity](docs/en/technical-notes/jpeg-reencoding/README.md). Check orientation, sampling and metadata after re-encoding, and handle thumbnails from the source image.
+- [Appending PDF overlays while preserving page content](docs/en/technical-notes/pdf-overlay/README.md). Overlay the visible area and check the original compressed streams and searchable text.
+- [Sharing a tiled watermark layout across formats](docs/en/technical-notes/shared-watermark-layout/README.md). Reuse the tile dimensions and placement rules for previews, JPEG and PDF.
+- [Scheduling asynchronous previews across layouts](docs/en/technical-notes/async-preview/README.md). Schedule rendering, discard stale results and carry editing state across layout changes.
+- [Saving local files and handling name collisions](docs/en/technical-notes/local-file-saving/README.md). Preserve extensions, handle collisions and limit cleanup in a user-selected directory.
+- [Matching browser languages and translating worker messages](docs/en/technical-notes/worker-localization/README.md). Select a dictionary from the browser’s preferences and translate worker messages on receipt.
+- [Matching ImageMagick WASM to its source and rebuilding it](docs/en/technical-notes/imagemagick-wasm-rebuild/README.md). Rebuild the native module and JavaScript wrapper from source snapshots pinned to commits.
+- [Single-artifact release and public byte checks](docs/en/technical-notes/verified-release/README.md). Use one build for GitHub Releases and Pages, then verify the public bytes before updating Latest.
+
 ## Build from source
 
 Use Node.js **22.18 or later** on a Vite-supported release line. Run these commands from the repository root.

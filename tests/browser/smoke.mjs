@@ -26,14 +26,19 @@ async function visit(browser, options, run) {
     locale: 'en-US', reducedMotion: 'reduce', serviceWorkers: 'block', ...options,
   });
   const unexpected = [];
-  await context.route(/^https?:/, (route) => {
-    const request = route.request();
-    if (request.isNavigationRequest() && request.url() === target.href) return route.continue();
-    unexpected.push(request.url());
-    return route.abort();
-  });
   try {
     const page = await context.newPage();
+    await context.route(/^https?:/, (route) => {
+      const request = route.request();
+      if (request.isNavigationRequest() && request.url() === target.href &&
+          request.frame() === page.mainFrame()) return route.continue();
+      unexpected.push(request.url());
+      return route.abort();
+    });
+    await context.routeWebSocket(/^wss?:/, (socket) => {
+      unexpected.push(socket.url());
+      return socket.close();
+    });
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
     page.setDefaultTimeout(15_000);
